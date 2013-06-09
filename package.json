@@ -1,0 +1,22 @@
+{
+  "name": "Tab_menu_list",
+  "version": "0.0.0",
+  "description": "Apex region plugin. Tab menu using a list template.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "Region",
+    "tab",
+    "menu",
+    "dropdown"
+  ],
+  "author": "NvanBaren",
+  "license": "MIT",
+  "gitHead": "bc7a1cf62bd0c4f6ca1a5d8ad48fccdedecc619e",
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
