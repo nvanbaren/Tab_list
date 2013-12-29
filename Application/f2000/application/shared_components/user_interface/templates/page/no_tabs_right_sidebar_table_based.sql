@@ -4,7 +4,7 @@ prompt  ......Page template 39658565916395974
 begin
  
 wwv_flow_api.create_template (
-  p_id => 39658545916395976 + wwv_flow_api.g_id_offset
+  p_id => 39658525916395976 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_theme_id => 102
  ,p_name => 'No Tabs - Right Sidebar (table-based)'

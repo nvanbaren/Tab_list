@@ -11,9 +11,9 @@ declare
 begin
 s := null;
 wwv_flow_api.create_install_script(
-  p_id => 22889603392766240 + wwv_flow_api.g_id_offset,
+  p_id => 22889583392766240 + wwv_flow_api.g_id_offset,
   p_flow_id => wwv_flow.g_flow_id,
-  p_install_id=> 22869921778761344 + wwv_flow_api.g_id_offset,
+  p_install_id=> 22869901778761344 + wwv_flow_api.g_id_offset,
   p_name => 'CG_REF_CODES',
   p_sequence=> 10,
   p_script_type=> 'INSTALL',
@@ -36,9 +36,9 @@ s:=s||''||unistr('\000a')||
 '';
 
 wwv_flow_api.create_install_script(
-  p_id => 22913213300776880 + wwv_flow_api.g_id_offset,
+  p_id => 22913193300776880 + wwv_flow_api.g_id_offset,
   p_flow_id => wwv_flow.g_flow_id,
-  p_install_id=> 22869921778761344 + wwv_flow_api.g_id_offset,
+  p_install_id=> 22869901778761344 + wwv_flow_api.g_id_offset,
   p_name => 'POSTCODES',
   p_sequence=> 20,
   p_script_type=> 'INSTALL',
@@ -299,9 +299,9 @@ s:=s||'ndex IN app$muttable.start_index..app$muttable.last_index'||unistr('\000a
 '';
 
 wwv_flow_api.create_install_script(
-  p_id => 22936804027781172 + wwv_flow_api.g_id_offset,
+  p_id => 22936784027781172 + wwv_flow_api.g_id_offset,
   p_flow_id => wwv_flow.g_flow_id,
-  p_install_id=> 22869921778761344 + wwv_flow_api.g_id_offset,
+  p_install_id=> 22869901778761344 + wwv_flow_api.g_id_offset,
   p_name => 'LOV',
   p_sequence=> 30,
   p_script_type=> 'INSTALL',

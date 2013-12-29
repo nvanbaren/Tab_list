@@ -39,7 +39,7 @@ t7:=t7||'<li ><div class="ui-state-active ui-corner-all"> #TEXT#</div></il>';
 t8:=t8||'<li ><div class="ui-state-default ui-corner-all"> #TEXT#</div></li>';
 
 wwv_flow_api.create_list_template (
-  p_id=>5947916013680406 + wwv_flow_api.g_id_offset,
+  p_id=>5947896013680406 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,

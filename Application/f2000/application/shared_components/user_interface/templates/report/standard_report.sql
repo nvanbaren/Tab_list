@@ -15,7 +15,7 @@ c2 := null;
 c3 := null;
 c4 := null;
 wwv_flow_api.create_row_template (
-  p_id=> 39457519598623000 + wwv_flow_api.g_id_offset,
+  p_id=> 39457499598623000 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_row_template_name=> 'Standard report',
   p_row_template1=> c1,
@@ -57,7 +57,7 @@ begin
  
 begin
 wwv_flow_api.create_row_template_patch (
-  p_id => 39457519598623000 + wwv_flow_api.g_id_offset,
+  p_id => 39457499598623000 + wwv_flow_api.g_id_offset,
   p_row_template_before_first =>'<tr class="ui-state-default">',
   p_row_template_after_last =>'</tr>');
 exception when others then null;

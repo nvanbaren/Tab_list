@@ -41,7 +41,7 @@ t8:=t8||'<li class="ui-state-default"><a href="#LINK#">#TEXT#'||unistr('\000a')|
 '<span class="vertical-sub-icon ui-button-icon-primary ui-icon ui-icon-circle-triangle-e"></span></a></il>';
 
 wwv_flow_api.create_list_template (
-  p_id=>5845002629537160 + wwv_flow_api.g_id_offset,
+  p_id=>5844982629537160 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,

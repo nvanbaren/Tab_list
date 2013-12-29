@@ -5,7 +5,7 @@ prompt  ...navigation bar entries
 begin
  
 wwv_flow_api.create_icon_bar_item(
-  p_id => 18478002771784684 + wwv_flow_api.g_id_offset,
+  p_id => 18477982771784684 + wwv_flow_api.g_id_offset,
   p_flow_id => wwv_flow.g_flow_id,
   p_icon_sequence=> 200,
   p_icon_image => '',

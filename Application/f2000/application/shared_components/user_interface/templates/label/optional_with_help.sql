@@ -5,7 +5,7 @@ begin
  
 begin
 wwv_flow_api.create_field_template (
-  p_id=> 39485835441634504 + wwv_flow_api.g_id_offset,
+  p_id=> 39485815441634504 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_template_name=>'Optional with help',
   p_template_body1=>'<label for="#CURRENT_ITEM_NAME#" tabindex="999" class="label help"><a class="label" href="javascript:popupFieldHelp(''#CURRENT_ITEM_ID#'',''&SESSION.'')" tabindex="999"><span>',

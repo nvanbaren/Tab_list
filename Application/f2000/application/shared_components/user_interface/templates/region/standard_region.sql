@@ -4,7 +4,7 @@ prompt  ......region template 39423044254603256
 begin
  
 wwv_flow_api.create_plug_template (
-  p_id => 39423024254603256 + wwv_flow_api.g_id_offset
+  p_id => 39423004254603256 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_layout => 'TABLE'
  ,p_template => 

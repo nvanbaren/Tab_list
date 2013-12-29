@@ -4,7 +4,7 @@ prompt  ......Button Template 39394438701593517
 begin
  
 wwv_flow_api.create_button_templates (
-  p_id => 39394418701593520 + wwv_flow_api.g_id_offset
+  p_id => 39394398701593520 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_template_name => 'Standard button'
  ,p_template => 

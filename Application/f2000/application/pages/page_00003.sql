@@ -7,7 +7,7 @@ begin
 wwv_flow_api.create_page (
   p_flow_id => wwv_flow.g_flow_id
  ,p_id => 3
- ,p_user_interface_id => 3079607899087759 + wwv_flow_api.g_id_offset
+ ,p_user_interface_id => 3079587899087759 + wwv_flow_api.g_id_offset
  ,p_tab_set => 'T_REGION'
  ,p_name => 'Tab submenu'
  ,p_alias => 'TABSUBMENU'
@@ -45,13 +45,13 @@ s:=s||'This is a demo page to get working tabs. <br />'||unistr('\000a')||
 '';
 
 wwv_flow_api.create_page_plug (
-  p_id=> 3062893550104111 + wwv_flow_api.g_id_offset,
+  p_id=> 3062873550104111 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 3,
   p_plug_name=> 'Demo text',
   p_region_name=>'',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423024254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 10,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -86,7 +86,7 @@ end;
 begin
  
 wwv_flow_api.create_page_branch(
-  p_id=>19141133083898930 + wwv_flow_api.g_id_offset,
+  p_id=>19141113083898930 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_flow_step_id=> 3,
   p_branch_name=> '',

@@ -3,7 +3,7 @@
 begin
  
 wwv_flow_api.create_plugin (
-  p_id => 47179558025693340 + wwv_flow_api.g_id_offset
+  p_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_plugin_type => 'REGION TYPE'
  ,p_name => 'NET.VANBAREN.APEX.DEMO_PLUGIN'
@@ -31,9 +31,9 @@ wwv_flow_api.create_plugin (
  ,p_version_identifier => '0.9'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 81428325932304050 + wwv_flow_api.g_id_offset
+  p_id => 81428305932304050 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 1
  ,p_display_sequence => 160
@@ -48,9 +48,9 @@ wwv_flow_api.create_plugin_attribute (
 '#EVENTS# A "list" of the individual events.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 81436944333337660 + wwv_flow_api.g_id_offset
+  p_id => 81436924333337660 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 2
  ,p_display_sequence => 170
@@ -63,9 +63,9 @@ wwv_flow_api.create_plugin_attribute (
 '#NAME# Name of the plugin.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84657658276745870 + wwv_flow_api.g_id_offset
+  p_id => 84657638276745870 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 5
  ,p_display_sequence => 50
@@ -90,9 +90,9 @@ wwv_flow_api.create_plugin_attribute (
 '#COMPONENTS# Information of the components using the plugin.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84663049843809680 + wwv_flow_api.g_id_offset
+  p_id => 84663029843809680 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 6
  ,p_display_sequence => 60
@@ -116,9 +116,9 @@ wwv_flow_api.create_plugin_attribute (
 '#HELP#  Replaced by the help template if there is a help text defined for the attribute.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84698554008886560 + wwv_flow_api.g_id_offset
+  p_id => 84698534008886560 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 7
  ,p_display_sequence => 70
@@ -132,9 +132,9 @@ wwv_flow_api.create_plugin_attribute (
 '#HELP_TEXT# Help text of the attribute.<br>'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84703947952922600 + wwv_flow_api.g_id_offset
+  p_id => 84703927952922600 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 8
  ,p_display_sequence => 80
@@ -153,9 +153,9 @@ wwv_flow_api.create_plugin_attribute (
 '#SUB_COMPONENTS# Actions belonging to the dynamic action or sub regions belonging to the region.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84713273495949000 + wwv_flow_api.g_id_offset
+  p_id => 84713253495949000 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 9
  ,p_display_sequence => 90
@@ -178,9 +178,9 @@ wwv_flow_api.create_plugin_attribute (
 '#HELP# Replaced by the component attribute help template.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84785753859075730 + wwv_flow_api.g_id_offset
+  p_id => 84785733859075730 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 10
  ,p_display_sequence => 100
@@ -194,9 +194,9 @@ wwv_flow_api.create_plugin_attribute (
 '#HELP_TEXT# Help text of the attribute.<br>'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84812070182108800 + wwv_flow_api.g_id_offset
+  p_id => 84812050182108800 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 11
  ,p_display_sequence => 110
@@ -215,9 +215,9 @@ wwv_flow_api.create_plugin_attribute (
 '#SUB_COMPONENTS# Actions belonging to the dynamic action or sub regions belonging to the region.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84868556339180560 + wwv_flow_api.g_id_offset
+  p_id => 84868536339180560 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 12
  ,p_display_sequence => 120
@@ -240,9 +240,9 @@ wwv_flow_api.create_plugin_attribute (
 '#HELP# Replaced by the component attribute help template.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84893452792198400 + wwv_flow_api.g_id_offset
+  p_id => 84893432792198400 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 13
  ,p_display_sequence => 130
@@ -256,9 +256,9 @@ wwv_flow_api.create_plugin_attribute (
 '#HELP_TEXT# Help text of the attribute.<br>'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 84902868638221940 + wwv_flow_api.g_id_offset
+  p_id => 84902848638221940 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 14
  ,p_display_sequence => 140
@@ -271,9 +271,9 @@ wwv_flow_api.create_plugin_attribute (
  ,p_help_text => 'Text that is displayed if there are no custom attributes of the plugin defined at the application or component level. '
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 54180131995036184 + wwv_flow_api.g_id_offset
+  p_id => 54180111995036184 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'APPLICATION'
  ,p_attribute_sequence => 15
  ,p_display_sequence => 150
@@ -286,9 +286,9 @@ wwv_flow_api.create_plugin_attribute (
 '#FULL_URL# Http:// is added if the url doesn''t have them already'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 83390276727549090 + wwv_flow_api.g_id_offset
+  p_id => 83390256727549090 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'COMPONENT'
  ,p_attribute_sequence => 1
  ,p_display_sequence => 10
@@ -299,25 +299,25 @@ wwv_flow_api.create_plugin_attribute (
  ,p_is_translatable => false
   );
 wwv_flow_api.create_plugin_attr_value (
-  p_id => 83395648807550480 + wwv_flow_api.g_id_offset
+  p_id => 83395628807550480 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_attribute_id => 83390276727549090 + wwv_flow_api.g_id_offset
+ ,p_plugin_attribute_id => 83390256727549090 + wwv_flow_api.g_id_offset
  ,p_display_sequence => 10
  ,p_display_value => 'Static text'
  ,p_return_value => 'S'
   );
 wwv_flow_api.create_plugin_attr_value (
-  p_id => 83399953309551840 + wwv_flow_api.g_id_offset
+  p_id => 83399933309551840 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_attribute_id => 83390276727549090 + wwv_flow_api.g_id_offset
+ ,p_plugin_attribute_id => 83390256727549090 + wwv_flow_api.g_id_offset
  ,p_display_sequence => 20
  ,p_display_value => 'Item'
  ,p_return_value => 'I'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 47179758156702830 + wwv_flow_api.g_id_offset
+  p_id => 47179738156702830 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'COMPONENT'
  ,p_attribute_sequence => 2
  ,p_display_sequence => 20
@@ -328,9 +328,9 @@ wwv_flow_api.create_plugin_attribute (
  ,p_help_text => 'The internal name of the plugin.'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 83424861405563620 + wwv_flow_api.g_id_offset
+  p_id => 83424841405563620 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'COMPONENT'
  ,p_attribute_sequence => 3
  ,p_display_sequence => 30
@@ -341,33 +341,33 @@ wwv_flow_api.create_plugin_attribute (
  ,p_is_translatable => false
   );
 wwv_flow_api.create_plugin_attr_value (
-  p_id => 83430266253565000 + wwv_flow_api.g_id_offset
+  p_id => 83430246253565000 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_attribute_id => 83424861405563620 + wwv_flow_api.g_id_offset
+ ,p_plugin_attribute_id => 83424841405563620 + wwv_flow_api.g_id_offset
  ,p_display_sequence => 10
  ,p_display_value => 'Current page'
  ,p_return_value => 'C'
   );
 wwv_flow_api.create_plugin_attr_value (
-  p_id => 83434571448566500 + wwv_flow_api.g_id_offset
+  p_id => 83434551448566500 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_attribute_id => 83424861405563620 + wwv_flow_api.g_id_offset
+ ,p_plugin_attribute_id => 83424841405563620 + wwv_flow_api.g_id_offset
  ,p_display_sequence => 20
  ,p_display_value => 'Static text'
  ,p_return_value => 'S'
   );
 wwv_flow_api.create_plugin_attr_value (
-  p_id => 83438848376569260 + wwv_flow_api.g_id_offset
+  p_id => 83438828376569260 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_attribute_id => 83424861405563620 + wwv_flow_api.g_id_offset
+ ,p_plugin_attribute_id => 83424841405563620 + wwv_flow_api.g_id_offset
  ,p_display_sequence => 30
  ,p_display_value => 'Item'
  ,p_return_value => 'I'
   );
 wwv_flow_api.create_plugin_attribute (
-  p_id => 83452067769574910 + wwv_flow_api.g_id_offset
+  p_id => 83452047769574910 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
- ,p_plugin_id => 47179558025693340 + wwv_flow_api.g_id_offset
+ ,p_plugin_id => 47179538025693340 + wwv_flow_api.g_id_offset
  ,p_attribute_scope => 'COMPONENT'
  ,p_attribute_sequence => 4
  ,p_display_sequence => 40
@@ -375,7 +375,7 @@ wwv_flow_api.create_plugin_attribute (
  ,p_attribute_type => 'TEXT'
  ,p_is_required => false
  ,p_is_translatable => false
- ,p_depending_on_attribute_id => 83424861405563620 + wwv_flow_api.g_id_offset
+ ,p_depending_on_attribute_id => 83424841405563620 + wwv_flow_api.g_id_offset
  ,p_depending_on_condition_type => 'NOT_EQUALS'
  ,p_depending_on_expression => 'C'
   );

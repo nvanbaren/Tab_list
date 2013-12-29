@@ -1,10 +1,10 @@
 --------------------------------------------------------
---  DDL for Function APR$R$TAB_MENU_LIST
+--  DDL for Function APR$TAB_MENU_LIST
 --------------------------------------------------------
 
-create or replace APR$R$TAB_MENU_LIST (p_region               in apex_plugin.t_region
-                                      ,p_plugin               in apex_plugin.t_plugin
-                                      ,p_is_printer_friendly  in boolean)
+create or replace function APR$TAB_MENU_LIST (p_region               in apex_plugin.t_region
+                                             ,p_plugin               in apex_plugin.t_plugin
+                                             ,p_is_printer_friendly  in boolean)
 return apex_plugin.t_region_render_result 
   as
   type r_attributes is record(
@@ -500,6 +500,6 @@ begin
     k := l_pat_table.next(k);
   end loop;  
   return l_return;
-end apr$r$tab_menu_list;
+end apr$tab_menu_list;
 
 /
