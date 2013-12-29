@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nvanbaren/Tab_menu_list.git"
+  },
   "keywords": [
     "Region",
     "tab",
@@ -14,7 +17,10 @@
     "dropdown"
   ],
   "author": "NvanBaren",
-  "license": "MIT",
+  "license": {
+    "type" :"MIT",
+    "url"  :"https://github.com/nvanbaren/Tab_menu_list/blob/master/MIT-LICENSE.txt"
+  },
   "gitHead": "bc7a1cf62bd0c4f6ca1a5d8ad48fccdedecc619e",
   "devDependencies": {
     "grunt": "~0.4.1",
