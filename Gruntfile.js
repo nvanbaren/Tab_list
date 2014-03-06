@@ -16,6 +16,24 @@ module.exports = function(grunt) {
   grunt.initConfig({
 	  personal: decodeJSON('.personalsettings.json'),
     pkg: grunt.file.readJSON('package.json'),
+		prompt: {
+			environment: {
+			  options: {
+					questions: [
+						{
+							config: 'personal.oraclehome',
+							type: 'input',
+							message: 'Oracle home'
+						},
+						{
+							config: 'personal.classpath',
+							type: 'input',
+							message: 'Class path'
+						}
+					]
+				}
+			}
+		},
 		setEnvironment:{
 			ORACLE_HOME:'<%= personal.oraclehome %>',
 			CLASSPATH:'<% personal.classpath %>'
@@ -87,6 +105,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-text-replace');
+	grunt.loadNpmTasks('grunt-prompt');
   
 	grunt.registerTask('encode-personal', 'Encode the .personal.json file', function() {
 		var buffers,output,filename='.personalsettings.json';
@@ -107,9 +126,14 @@ module.exports = function(grunt) {
 		process.env[this.target] = this.data;
 	});
 	
-	grunt.registerTask('test',['replace:generate']);
+	grunt.registerTask('test',
+  [
+    'prompt:environment'
+  ]);
+	
+	//grunt.registerTask('test',['replace:generate']);
   grunt.registerTask('load', ['copy:load','shell:load','clean:load']);
-  grunt.registerTask('build',  ['setEnvironment','shell:generate','replace:generate','shell:split']);
+  grunt.registerTask('build',  ['prompt:environment','setEnvironment','shell:generate','replace:generate','shell:split']);
   grunt.registerTask('default', ['shell:remove_app','shell:install_app','shell:install_code','copy:load','shell:load','clean:load']);
 	grunt.registerTask('install', ['shell:install_app','shell:install_code','copy:load','shell:load','clean:load']);
 };
