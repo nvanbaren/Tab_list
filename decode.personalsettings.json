@@ -1,6 +1,0 @@
-{
-  "system":{"password":"nicolette"},
-  "application":{"password":"hr","user":"hr","workspace":"NICOLETTE"},
-  "code":{"password":"plus","user":"apexplus_owner"},
-  "database":{"host":"xe","url":"localhost:1521:XE"}  
-}

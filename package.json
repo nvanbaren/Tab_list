@@ -18,16 +18,17 @@
   ],
   "author": "NvanBaren",
   "license": {
-    "type" :"MIT",
-    "url"  :"https://github.com/nvanbaren/Tab_menu_list/blob/master/MIT-LICENSE.txt"
+    "type": "MIT",
+    "url": "https://github.com/nvanbaren/Tab_menu_list/blob/master/MIT-LICENSE.txt"
   },
   "gitHead": "bc7a1cf62bd0c4f6ca1a5d8ad48fccdedecc619e",
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~0.4.2",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-shell": "~0.2.2",
+    "grunt-shell": "~0.6.4",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-text-replace": "~0.3.7"
+    "grunt-text-replace": "~0.3.7",
+    "grunt-prompt": "~1.0.0"
   }
 }
