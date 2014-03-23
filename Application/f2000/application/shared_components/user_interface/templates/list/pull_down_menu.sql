@@ -1,5 +1,5 @@
 --application/shared_components/user_interface/templates/list/pull_down_menu
-prompt  ......list template 39511451865642255
+prompt  ......list template 39511401865642260
  
 begin
  
@@ -50,7 +50,7 @@ t7:=t7||'<li class="dhtmlSubMenuS ui-state-active ui-corner-all"><a href="#LINK#
 t8:=t8||'<li class="dhtmlSubMenuS ui-state-default ui-corner-all"><a href="#LINK#" class="dhtmlSubMenuS" onmouseover="dhtml_MenuOpen(this,''#LIST_ITEM_ID#'',true,''Left'')"><span style="float:left;">#TEXT#</span><span class="t13MIMG ui-button-icon-primary ui-icon ui-icon-circle-triangle-e" style="top:0px;"></span></a></li>';
 
 wwv_flow_api.create_list_template (
-  p_id=>39511411865642260 + wwv_flow_api.g_id_offset,
+  p_id=>39511391865642260 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,

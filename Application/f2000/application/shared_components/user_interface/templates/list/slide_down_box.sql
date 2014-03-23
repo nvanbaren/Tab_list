@@ -1,5 +1,5 @@
 --application/shared_components/user_interface/templates/list/slide_down_box
-prompt  ......list template 5847522594664229
+prompt  ......list template 5847472594664229
  
 begin
  
@@ -73,7 +73,7 @@ t6:=t6||'<li>'||unistr('\000a')||
 t7 := null;
 t8 := null;
 wwv_flow_api.create_list_template (
-  p_id=>5847482594664229 + wwv_flow_api.g_id_offset,
+  p_id=>5847462594664229 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,

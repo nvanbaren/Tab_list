@@ -7,7 +7,7 @@ begin
 wwv_flow_api.create_page (
   p_flow_id => wwv_flow.g_flow_id
  ,p_id => 4
- ,p_user_interface_id => 3079587899087759 + wwv_flow_api.g_id_offset
+ ,p_user_interface_id => 3079567899087759 + wwv_flow_api.g_id_offset
  ,p_name => 'Get adres'
  ,p_alias => 'GET_ADRES'
  ,p_step_title => 'Get adres'
@@ -39,13 +39,13 @@ s:=s||'This is a demo page to get working tabs.<br />This is page &APP_PAGE_ID.<
 '';
 
 wwv_flow_api.create_page_plug (
-  p_id=> 3063082207106596 + wwv_flow_api.g_id_offset,
+  p_id=> 3063062207106596 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 4,
   p_plug_name=> 'Demo text',
   p_region_name=>'',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 10,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,

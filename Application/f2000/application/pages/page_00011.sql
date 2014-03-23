@@ -7,7 +7,7 @@ begin
 wwv_flow_api.create_page (
   p_flow_id => wwv_flow.g_flow_id
  ,p_id => 11
- ,p_user_interface_id => 3079587899087759 + wwv_flow_api.g_id_offset
+ ,p_user_interface_id => 3079567899087759 + wwv_flow_api.g_id_offset
  ,p_tab_set => 'T_REGION'
  ,p_name => 'Tab menu list'
  ,p_alias => 'TABMENULIST'
@@ -25,7 +25,7 @@ wwv_flow_api.create_page (
 '    .bind(''mouseleave'',function(){slidebox_out(this,120);})'||unistr('\000a')||
 '});'
  ,p_css_file_urls => '/projects/Tab_menu_list/Demo/css/Special-lists.css'
- ,p_step_template => 39658525916395976 + wwv_flow_api.g_id_offset
+ ,p_step_template => 39658505916395976 + wwv_flow_api.g_id_offset
  ,p_page_is_public_y_n => 'N'
  ,p_protection_level => 'N'
  ,p_cache_page_yn => 'N'
@@ -48,13 +48,13 @@ declare
 begin
 s := null;
 wwv_flow_api.create_page_plug (
-  p_id=> 3025995509145341 + wwv_flow_api.g_id_offset,
+  p_id=> 3025975509145341 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 11,
   p_plug_name=> 'Plugin demonstration',
   p_region_name=>'',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 120,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -87,13 +87,13 @@ declare
 begin
 s := null;
 wwv_flow_api.create_page_plug (
-  p_id=> 5836386807455394 + wwv_flow_api.g_id_offset,
+  p_id=> 5836366807455394 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 11,
   p_plug_name=> 'Pull down menu',
   p_region_name=>'PULLDOWN',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 10,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -123,13 +123,13 @@ declare
 begin
 s := null;
 wwv_flow_api.create_page_plug (
-  p_id=> 5843499823258258 + wwv_flow_api.g_id_offset,
+  p_id=> 5843479823258258 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 11,
   p_plug_name=> 'Horizontal menu',
   p_region_name=>'HORIZONTALMENU',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 20,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -159,13 +159,13 @@ declare
 begin
 s := null;
 wwv_flow_api.create_page_plug (
-  p_id=> 5844799814532625 + wwv_flow_api.g_id_offset,
+  p_id=> 5844779814532625 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 11,
   p_plug_name=> 'Vertical menu',
   p_region_name=>'VERTICALMENU',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 90,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -195,13 +195,13 @@ declare
 begin
 s := null;
 wwv_flow_api.create_page_plug (
-  p_id=> 5847685037703758 + wwv_flow_api.g_id_offset,
+  p_id=> 5847665037703758 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 11,
   p_plug_name=> 'Slide down box',
   p_region_name=>'SLIDEDOWNBOX',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 100,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -231,13 +231,13 @@ declare
 begin
 s := null;
 wwv_flow_api.create_page_plug (
-  p_id=> 5855294356678184 + wwv_flow_api.g_id_offset,
+  p_id=> 5855274356678184 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 11,
   p_plug_name=> 'Fly out',
   p_region_name=>'FLYOUTMENU',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 110,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -267,13 +267,13 @@ declare
 begin
 s := null;
 wwv_flow_api.create_page_plug (
-  p_id=> 5861985416525909 + wwv_flow_api.g_id_offset,
+  p_id=> 5861965416525909 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 11,
   p_plug_name=> 'Breadcrumb menu',
   p_region_name=>'BREADCRUMBMENU',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 30,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
@@ -316,7 +316,7 @@ end;
 begin
  
 wwv_flow_api.create_page_da_event (
-  p_id => 3065774349153735 + wwv_flow_api.g_id_offset
+  p_id => 3065754349153735 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_page_id => 11
  ,p_name => 'Accordion plugin demonstration'
@@ -325,10 +325,10 @@ wwv_flow_api.create_page_da_event (
  ,p_bind_event_type => 'ready'
   );
 wwv_flow_api.create_page_da_action (
-  p_id => 3066075162153752 + wwv_flow_api.g_id_offset
+  p_id => 3066055162153752 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_page_id => 11
- ,p_event_id => 3065774349153735 + wwv_flow_api.g_id_offset
+ ,p_event_id => 3065754349153735 + wwv_flow_api.g_id_offset
  ,p_event_result => 'TRUE'
  ,p_action_sequence => 10
  ,p_execute_on_page_init => 'N'

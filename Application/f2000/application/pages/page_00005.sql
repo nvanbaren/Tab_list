@@ -7,7 +7,7 @@ begin
 wwv_flow_api.create_page (
   p_flow_id => wwv_flow.g_flow_id
  ,p_id => 5
- ,p_user_interface_id => 3079587899087759 + wwv_flow_api.g_id_offset
+ ,p_user_interface_id => 3079567899087759 + wwv_flow_api.g_id_offset
  ,p_name => 'Domain'
  ,p_alias => 'DOMAIN'
  ,p_step_title => 'Domain'
@@ -46,13 +46,13 @@ s:=s||'This is a demo page to get working tabs.<br />'||unistr('\000a')||
 '';
 
 wwv_flow_api.create_page_plug (
-  p_id=> 3063291211109204 + wwv_flow_api.g_id_offset,
+  p_id=> 3063271211109204 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 5,
   p_plug_name=> 'Demo text',
   p_region_name=>'',
   p_escape_on_http_output=>'Y',
-  p_plug_template=> 39423004254603256+ wwv_flow_api.g_id_offset,
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 10,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,

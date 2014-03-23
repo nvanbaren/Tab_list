@@ -1,5 +1,5 @@
 --application/shared_components/user_interface/templates/list/horizontal_menu
-prompt  ......list template 5843024512219108
+prompt  ......list template 5842974512219108
  
 begin
  
@@ -39,7 +39,7 @@ t7:=t7||'<li class="CurrentTab ui-state-active"><a href="#LINK#">#TEXT#</a></il>
 t8:=t8||'<li class="Tab ui-state-default"><a href="#LINK#" >#TEXT#</a></li>';
 
 wwv_flow_api.create_list_template (
-  p_id=>5842984512219108 + wwv_flow_api.g_id_offset,
+  p_id=>5842964512219108 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,
