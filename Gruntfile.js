@@ -1,5 +1,4 @@
 module.exports = function(grunt) {
-	
   grunt.initConfig({
 	  personal: grunt.file.readJSON('.personalsettings.json'),
     pkg: grunt.file.readJSON('package.json'),
@@ -186,45 +185,30 @@ module.exports = function(grunt) {
     shell: {
         generate: {
             command: ['cd Application','java oracle.apex.APEXExport -db <%= personal.database.url %>:<%= personal.database.host %> -user <%= personal.application.user %> -password <%= personal.application.password %> -applicationid 2000'].join('&&'),
-            stdout: true,
-						stderr: true,
-						stdin:  true,
-						failOnError: true
+            options:{
+						  stdout: true,
+						  stderr: true,
+						  stdin:  true,
+						  failOnError: true
+					  }
 				},
         split: {
             command: ['cd Application','java oracle.apex.APEXExportSplitter f2000.sql'].join('&&'),
-						stdout: true,
-						stderr: true,
-						stdin: true,
-						failOnError: true
+						options:{
+						  stdout: true,
+						  stderr: true,
+						  stdin: true,
+						  failOnError: true
+						}
         },
-				remove_app: {
-				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @remove_app.sql <%= personal.application.workspace %>',
-						stdout: true,
-						stderr: true,
-						stdin: true,
-						failOnError: true
-				},
 				install_app: {
-				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @install_app.sql <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.application.user %>',
-						stdout: true,
-						stderr: true,
-						stdin: true,
-						failOnError: true
-				},
-				install_code: {
-				    command: 'sqlplus <%= personal.code.user %>/<%= personal.code.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @install_code.sql',
-						stdout: true,
-						stderr: true,
-						stdin: true,
-						failOnError: true
-				},
-				load: {
-				    command: 'sqlplus sys/<%= personal.system.password %>@//<%= personal.database.url %>/<%= personal.database.host %> as sysdba @loadimg.sql',
-						stdout: true,
-						stderr: true,
-						stdin: true,
-						failOnError: true
+				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @install_app.sql <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>',
+						options:{
+						  stdout: true,
+						  stderr: true,
+						  stdin: true,
+						  failOnError: true
+						}
 				}
     },
 		copy: {
@@ -249,6 +233,9 @@ module.exports = function(grunt) {
 				src: ["c:\\temp\\Tab_menu_list"]
 			}
 		},
+		cleanFile:{
+		  split: ["Application/f2000.sql"]
+		},
 		replace:{
 			generate:{
 				src:["Application/f2000.sql"],
@@ -266,6 +253,20 @@ module.exports = function(grunt) {
 						return text;
 					}
 				}]
+			},
+			split:{
+			  src:["Application/f2000/install.sql","Application/f2000/application/create_application.sql"],
+				overwrite:true,
+				replacements:[
+					{
+						from:'@',
+						to:'@Application/f2000/'
+					},
+					{
+						from:"prompt  ...user interfaces",
+						to:"prompt  ...user-interfaces"
+					}
+				]
 			}
 		}
   });
@@ -280,17 +281,21 @@ module.exports = function(grunt) {
 	  filename= '.personalsettings.json';
 		grunt.file.write(filename,JSON.stringify(grunt.config('personal')));
 	});
-  
+ 
   grunt.registerMultiTask('setEnvironment','Set a enviroment variable',function(){
 	  /*Set an environment variable*/
 		console.log(this.target+'  '+this.data);
 		process.env[this.target] = this.data;
 	});
+	grunt.registerMultiTask('cleanFile','Delete a file',function(){
+	  var fs = require('fs');
+		this.filesSrc.forEach(function(filename) {
+      fs.unlinkSync(filename)
+    });
+	});
 
-	grunt.registerTask('test',['prompt:install','shell:install_app']);
-  grunt.registerTask('load', ['copy:load','shell:load','clean:load']);
-  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:generate','replace:generate','shell:split']);
-  grunt.registerTask('default', ['prompt:install','shell:remove_app','shell:install_app','shell:install_code','copy:load','shell:load','clean:load']);
-	grunt.registerTask('install', ['prompt:install','shell:install_app','shell:install_code','copy:load','shell:load','clean:load']);
+	grunt.registerTask('test',['prompt:install','copy:load','shell:install_app','clean:load']);
+  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:generate','replace:generate','shell:split','replace:split','cleanFile:split']);
+  grunt.registerTask('default', ['prompt:install','copy:load','shell:install_app','clean:load']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
 };
