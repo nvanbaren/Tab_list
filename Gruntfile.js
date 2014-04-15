@@ -183,8 +183,11 @@ module.exports = function(grunt) {
 			CLASSPATH:'<%= personal.classpath %>'
 		},
     shell: {
-        generate: {
-            command: ['cd Application','java oracle.apex.APEXExport -db <%= personal.database.url %>:<%= personal.database.host %> -user <%= personal.application.user %> -password <%= personal.application.password %> -applicationid 2000'].join('&&'),
+        build: {
+            command: ['cd Application'
+						         ,'java oracle.apex.APEXExport -db <%= personal.database.url %>:<%= personal.database.host %> -user <%= personal.application.user %> -password <%= personal.application.password %> -applicationid 2000'
+										 ,'java oracle.apex.APEXExportSplitter f2000.sql'
+										 ].join('&&'),
             options:{
 						  stdout: true,
 						  stderr: true,
@@ -192,16 +195,7 @@ module.exports = function(grunt) {
 						  failOnError: true
 					  }
 				},
-        split: {
-            command: ['cd Application','java oracle.apex.APEXExportSplitter f2000.sql'].join('&&'),
-						options:{
-						  stdout: true,
-						  stderr: true,
-						  stdin: true,
-						  failOnError: true
-						}
-        },
-				install_app: {
+				install: {
 				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @install_app.sql <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>',
 						options:{
 						  stdout: true,
@@ -238,7 +232,13 @@ module.exports = function(grunt) {
 		},
 		replace:{
 			generate:{
-				src:["Application/f2000.sql"],
+				src:["Application/f2000/application/*.sql"
+				    ,"Application/f2000/application/*/*.sql"
+				    ,"Application/f2000/application/*/*/*.sql."
+						,"Application/f2000/application/*/*/*/*.sql"
+						,"Application/f2000/application/*/*/*/*/*.sql"
+						,"Application/f2000/application/shared_components/navigation/*.sql"
+						],
 				overwrite:true,
 				replacements:[{
 					from:/([0-9]+)([ ]*\+[ ]*wwv_flow_api.g_id_offset)/g,
@@ -255,7 +255,7 @@ module.exports = function(grunt) {
 				}]
 			},
 			split:{
-			  src:["Application/f2000/install.sql","Application/f2000/application/create_application.sql"],
+			  src:["Application/f2000/install.sql","Application/f2000/application/create_application.sql","Application/f2000/application/set_environment.sql"],
 				overwrite:true,
 				replacements:[
 					{
@@ -265,6 +265,10 @@ module.exports = function(grunt) {
 					{
 						from:"prompt  ...user interfaces",
 						to:"prompt  ...user-interfaces"
+					},
+					{
+					  from:/^--\s{1,}Date and Time:\s{1,}\d{2}:\d{2}[\s|\w|\d|,]{1,}$/im,
+						to:"--"
 					}
 				]
 			}
@@ -287,6 +291,7 @@ module.exports = function(grunt) {
 		console.log(this.target+'  '+this.data);
 		process.env[this.target] = this.data;
 	});
+	
 	grunt.registerMultiTask('cleanFile','Delete a file',function(){
 	  var fs = require('fs');
 		this.filesSrc.forEach(function(filename) {
@@ -294,8 +299,9 @@ module.exports = function(grunt) {
     });
 	});
 
-	grunt.registerTask('test',['prompt:install','copy:load','shell:install_app','clean:load']);
-  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:generate','replace:generate','shell:split','replace:split','cleanFile:split']);
+	grunt.registerTask('test',['prompt:install','copy:load','shell:install','clean:load']);
+  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace','cleanFile']);
+	grunt.registerTask('install', ['prompt:install','copy:load','shell:install_app','clean:load']);
   grunt.registerTask('default', ['prompt:install','copy:load','shell:install_app','clean:load']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
 };
