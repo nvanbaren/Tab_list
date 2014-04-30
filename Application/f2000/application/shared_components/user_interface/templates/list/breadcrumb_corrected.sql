@@ -1,5 +1,5 @@
 --application/shared_components/user_interface/templates/list/breadcrumb_corrected
-prompt  ......list template 5912931490308224
+prompt  ......list template 5912881490308224
  
 begin
  
@@ -39,7 +39,7 @@ t7:=t7||'<li class="ui-state-active breadcrumb-sub-parent" ><a href="#LINK#"><sp
 t8:=t8||'<li class="ui-state-default breadcrumb-sub-parent"><a href="#LINK#" ><span>#TEXT#</span><span class="breadcrumb-sub-icon ui-button-icon-primary ui-icon ui-icon-circle-triangle-s"></span></a></li>';
 
 wwv_flow_api.create_list_template (
-  p_id=>5912891490308224 + wwv_flow_api.g_id_offset,
+  p_id=>5912871490308224 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,

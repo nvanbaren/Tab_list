@@ -1,5 +1,5 @@
 --application/shared_components/user_interface/templates/list/fly_out
-prompt  ......list template 5855142895644402
+prompt  ......list template 5855092895644402
  
 begin
  
@@ -39,7 +39,7 @@ t7:=t7||'<li><a href="#LINK#">#TEXT#</a></li>';
 t8:=t8||'<li><a href="#LINK#">#TEXT#</a></li>';
 
 wwv_flow_api.create_list_template (
-  p_id=>5855102895644402 + wwv_flow_api.g_id_offset,
+  p_id=>5855082895644402 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,

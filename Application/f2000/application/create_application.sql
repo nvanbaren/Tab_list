@@ -10,18 +10,18 @@ wwv_flow_api.create_flow(
   p_alias => nvl(wwv_flow_application_install.get_application_alias,'T_TAB_MENU_LIST'),
   p_page_view_logging => 'YES',
   p_page_protection_enabled_y_n=> 'Y',
-  p_checksum_salt_last_reset => '20130815223118',
+  p_checksum_salt_last_reset => '20140430221329',
   p_max_session_length_sec=> null,
   p_compatibility_mode=> '4.2',
   p_html_escaping_mode=> 'E',
   p_flow_language=> 'en',
   p_flow_language_derived_from=> '',
   p_allow_feedback_yn=> 'N',
-  p_flow_image_prefix => nvl(wwv_flow_application_install.get_image_prefix,'/i/'),
+  p_flow_image_prefix => nvl(wwv_flow_application_install.get_image_prefix,''),
   p_publish_yn=> 'N',
   p_documentation_banner=> '',
   p_authentication=> 'PLUGIN',
-  p_authentication_id=> 25653495606962650 + wwv_flow_api.g_id_offset,
+  p_authentication_id=> 25653475606962650 + wwv_flow_api.g_id_offset,
   p_logout_url=> '',
   p_application_tab_set=> 1,
   p_public_url_prefix => '',
@@ -52,8 +52,8 @@ wwv_flow_api.create_flow(
   p_substitution_value_03  => 'redmond',
   p_substitution_string_04 => 'APPIMAGES',
   p_substitution_value_04  => '/projects/Tab_menu_list/Application/images/',
-  p_last_updated_by => 'NICOLETTE',
-  p_last_upd_yyyymmddhh24miss=> '20130815223118',
+  p_last_updated_by => 'HR',
+  p_last_upd_yyyymmddhh24miss=> '20140430221329',
   p_ui_type_name => null,
   p_required_roles=> wwv_flow_utilities.string_to_table2(''));
  
@@ -61,7 +61,10 @@ wwv_flow_api.create_flow(
 end;
 /
 
-prompt  ...user interfaces
+----------------
+--package app map
+--
+prompt  ...user-interfaces
 --
  
 begin

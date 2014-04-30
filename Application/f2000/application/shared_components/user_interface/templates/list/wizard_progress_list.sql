@@ -1,5 +1,5 @@
 --application/shared_components/user_interface/templates/list/wizard_progress_list
-prompt  ......list template 5899450697839847
+prompt  ......list template 5899400697839847
  
 begin
  
@@ -33,7 +33,7 @@ t6 := null;
 t7 := null;
 t8 := null;
 wwv_flow_api.create_list_template (
-  p_id=>5899410697839847 + wwv_flow_api.g_id_offset,
+  p_id=>5899390697839847 + wwv_flow_api.g_id_offset,
   p_flow_id=>wwv_flow.g_flow_id,
   p_list_template_current=>t,
   p_list_template_noncurrent=> t2,
