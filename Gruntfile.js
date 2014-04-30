@@ -301,7 +301,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('test',['prompt:install','copy:load','shell:install','clean:load']);
   grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace','cleanFile']);
-	grunt.registerTask('install', ['prompt:install','copy:load','shell:install_app','clean:load']);
-  grunt.registerTask('default', ['prompt:install','copy:load','shell:install_app','clean:load']);
+	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load']);
+  grunt.registerTask('default', ['prompt:install','copy:load','shell:install','clean:load']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
 };
