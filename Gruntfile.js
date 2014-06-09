@@ -272,6 +272,29 @@ module.exports = function(grunt) {
 					}
 				]
 			}
+		},	
+		readme_generator: {
+			build : { 
+				options: {
+					// Task-specific options go here.
+					readme_folder: "Documentation",
+					output: "README.md",
+					table_of_contents: true,
+					toc_extra_links: [],
+					generate_changelog: false,
+					has_travis: false,
+					generate_footer: true,
+					generate_title: true,
+					package_title: "Tab list menu"
+				},
+				order: {
+					// Title of the piece and the File name goes here
+					// "Filename" : "Title"
+					"usage.md": "Usage",
+					"contribute.md": "Contribute",
+					"license.md": "License MIT"
+				}
+			}
 		}
   });
 	
@@ -280,6 +303,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-prompt');
+	grunt.loadNpmTasks('grunt-readme-generator');
 	
 	grunt.registerTask('create-personal','Create the .personal.json file',function(){
 	  filename= '.personalsettings.json';
@@ -299,7 +323,7 @@ module.exports = function(grunt) {
     });
 	});
 
-	grunt.registerTask('test',['prompt:install','copy:load','shell:install','clean:load']);
+	grunt.registerTask('test',['readme_generator:build']);
   grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace','cleanFile']);
 	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load']);
   grunt.registerTask('default', ['prompt:install','copy:load','shell:install','clean:load']);
