@@ -228,7 +228,8 @@ module.exports = function(grunt) {
 			}
 		},
 		cleanFile:{
-		  split: ["Application/f2000.sql"]
+		  split: ["Application/f2000.sql"],
+			release:["Source/sql/temp_APR$TAB_MENU_LIST.sql","Application/f2000/application/shared_components/plugins/region_type/temp_net_vanbaren_apex_tab_menu_list.sql"]
 		},
 		replace:{
 			generate:{
@@ -269,6 +270,52 @@ module.exports = function(grunt) {
 					{
 					  from:/^--\s{1,}Date and Time:\s{1,}\d{2}:\d{2}[\s|\w|\d|,]{1,}$/im,
 						to:"--"
+					}
+				]
+			},
+			release1:{
+				src:["Source/sql/APR$TAB_MENU_LIST.sql"],
+				dest:["Source/sql/temp_APR$TAB_MENU_LIST.sql"],
+				replacements:[
+				  {
+					  from:/^create or replace /im,
+						to:""
+					},
+				  {
+						from:/^\/$/m,
+						to:""
+					},
+					{
+						from:"'",
+						to:"''"
+					},
+					{
+						from:/\n/g,
+						to:"'||unistr('\\000a')||\n'"
+					}
+				]
+			},
+			release2:{
+				src:["Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list.sql"],
+				dest:["Application/f2000/application/shared_components/plugins/region_type/temp_net_vanbaren_apex_tab_menu_list.sql"],
+				replacements:[
+					{
+					  from:"/*CODE*/",
+						to:function(){return grunt.file.read("Source/sql/temp_APR$TAB_MENU_LIST.sql");}
+					},
+					{
+					  from:"/*LICENSE*/",
+						to:function(){return grunt.file.read("MIT-LICENSE.txt");}
+					}
+				]
+			},
+			release3:{
+				src:["Build/release_plugin_template.sql"],
+				dest:["region_type_plugin_net_vanbaren_apex_tab_menu_list.sql"],
+				replacements:[
+					{
+						from:"/*CODE*/",
+						to:function(){return grunt.file.read("Application/f2000/application/shared_components/plugins/region_type/temp_net_vanbaren_apex_tab_menu_list.sql");}
 					}
 				]
 			}
@@ -324,8 +371,9 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('test',['readme_generator:build']);
-  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace','cleanFile']);
+  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace:generate','replace:split','cleanFile:split']);
 	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load']);
   grunt.registerTask('default', ['prompt:install','copy:load','shell:install','clean:load']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
+	grunt.registerTask('release',['build','replace:release1','replace:release2','replace:release3','cleanFile:release'])
 };
