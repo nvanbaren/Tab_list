@@ -6,7 +6,7 @@ For these task are several settings depend on your environment, below you will f
 Most of these settings will be the same for every run so I have created the task **personal** that will store these settings in a file.
 The passwords will not be stored.
 
-* **Workspace Workspace** in which the application should be imported.
+* **Workspace** Workspace in which the application should be imported.
 * **Application schema** The parsing schema of the application
 * **Application schema** password. The password for the parsing schema of the application.
 * **Application offset** of the id's of the different elements. Only needs to change if your not the only developer working on this plugin in the same database at the same time. 

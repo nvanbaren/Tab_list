@@ -276,7 +276,7 @@ begin
       end loop;
     end if;      
     
-    l_is_current := (l_pat_table(k).current_for_tabset = nvl(l_current_tab_set,'$'));
+    l_is_current := (l_pat_table(k).current_for_tabset = nvl(l_current_tab_set,'!'));
     if l_tab_table.count = 1
        and
        l_include_single = 'N'

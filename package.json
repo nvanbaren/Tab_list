@@ -24,11 +24,14 @@
   "gitHead": "bc7a1cf62bd0c4f6ca1a5d8ad48fccdedecc619e",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-shell": "~0.6.4",
-    "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-prompt": "~1.0.0",
+    "grunt-shell": "~0.6.4",
     "grunt-text-replace": "~0.3.7",
-    "grunt-prompt": "~1.0.0"
+    "grunt-zip": "~0.15.0",
+    "markdown": "^0.5.0",
+    "pdfkit": "^0.7.0"
   }
 }

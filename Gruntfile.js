@@ -229,7 +229,7 @@ module.exports = function(grunt) {
 		},
 		cleanFile:{
 		  split: ["Application/f2000.sql"],
-			release:["Source/sql/temp_APR$TAB_MENU_LIST.sql","Application/f2000/application/shared_components/plugins/region_type/temp_net_vanbaren_apex_tab_menu_list.sql"]
+			release:["guide.pdf"]
 		},
 		replace:{
 			generate:{
@@ -273,49 +273,32 @@ module.exports = function(grunt) {
 					}
 				]
 			},
-			release1:{
-				src:["Source/sql/APR$TAB_MENU_LIST.sql"],
-				dest:["Source/sql/temp_APR$TAB_MENU_LIST.sql"],
-				replacements:[
-				  {
-					  from:/^create or replace /im,
-						to:""
-					},
-				  {
-						from:/^\/$/m,
-						to:""
-					},
-					{
-						from:"'",
-						to:"''"
-					},
-					{
-						from:/\n/g,
-						to:"'||unistr('\\000a')||\n'"
-					}
-				]
-			},
-			release2:{
-				src:["Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list.sql"],
-				dest:["Application/f2000/application/shared_components/plugins/region_type/temp_net_vanbaren_apex_tab_menu_list.sql"],
-				replacements:[
-					{
-					  from:"/*CODE*/",
-						to:function(){return grunt.file.read("Source/sql/temp_APR$TAB_MENU_LIST.sql");}
-					},
-					{
-					  from:"/*LICENSE*/",
-						to:function(){return grunt.file.read("MIT-LICENSE.txt");}
-					}
-				]
-			},
-			release3:{
+			release:{
 				src:["Build/release_plugin_template.sql"],
 				dest:["region_type_plugin_net_vanbaren_apex_tab_menu_list.sql"],
 				replacements:[
 					{
 						from:"/*CODE*/",
-						to:function(){return grunt.file.read("Application/f2000/application/shared_components/plugins/region_type/temp_net_vanbaren_apex_tab_menu_list.sql");}
+						to:function(){
+						    dummyCharacter = String.fromCharCode(2580);
+								regexpDummyCharacter = new RegExp(dummyCharacter,"g")
+								sourceFile  = grunt.file.read("Source/sql/APR$TAB_MENU_LIST.sql");
+								pluginFile  = grunt.file.read("Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list.sql");
+								licenseFile = grunt.file.read("MIT-LICENSE.txt");
+								grunt.verbose.write("Files read");
+								sourceFile = sourceFile.replace(/^create or replace /im,"");
+								sourceFile = sourceFile.replace(/^\/$/m,"");
+						    sourceFile = sourceFile.replace(/'/g,"''");
+								sourceFile = sourceFile.replace(/\n/g,"'||unistr('\\000a')||\n'");
+								/*$ plays havoc replace with unused character after inserting in pluginFile change back*/
+								sourceFile = sourceFile.replace(/\$/g,dummyCharacter);
+						    grunt.verbose.write("sourceFile replacements done");
+								pluginFile = pluginFile.replace("/*CODE*/",sourceFile);
+								pluginFile = pluginFile.replace(regexpDummyCharacter,'$');
+								pluginFile = pluginFile.replace("/*LICENSE*/",licenseFile);								
+								grunt.verbose.write("pluginFile replacements done");
+                return pluginFile;							
+						}
 					}
 				]
 			}
@@ -342,6 +325,21 @@ module.exports = function(grunt) {
 					"license.md": "License MIT"
 				}
 			}
+		},
+		zip:{
+		  release:{
+				dest:"release/<%= pkg.name %>_<%= pkg.version%>"+".zip",
+				src:["Source/**","region_type_plugin_net_vanbaren_apex_tab_menu_list.sql","guide.pdf"]
+			}
+		},
+		pdfgenerator:{
+		  release:{
+				src:['Documentation/Usage.md','Documentation/Contribute.md'],
+				dest:'guide.pdf',
+				options: {
+				  styleFile:"Build/style.json"
+				}
+			}
 		}
   });
 	
@@ -351,6 +349,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-prompt');
 	grunt.loadNpmTasks('grunt-readme-generator');
+	grunt.loadNpmTasks('grunt-zip');
+	grunt.loadTasks('tasks');	
 	
 	grunt.registerTask('create-personal','Create the .personal.json file',function(){
 	  filename= '.personalsettings.json';
@@ -369,11 +369,11 @@ module.exports = function(grunt) {
       fs.unlinkSync(filename)
     });
 	});
-
-	grunt.registerTask('test',['readme_generator:build']);
+	
+	grunt.registerTask('test',['pdfgenerator','zip']);
   grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace:generate','replace:split','cleanFile:split']);
 	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load']);
   grunt.registerTask('default', ['prompt:install','copy:load','shell:install','clean:load']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
-	grunt.registerTask('release',['build','replace:release1','replace:release2','replace:release3','cleanFile:release'])
+	grunt.registerTask('release',['build','replace:release','pdfgenerator','zip','cleanFile:release']);
 };

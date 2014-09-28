@@ -1,0 +1,87 @@
+{
+  "title": {
+    "font": "Times-Roman",
+    "fontSize": 30,
+    "padding": 15,
+		"align":"left"
+  },
+  "h1": {
+    "font": "Times-Roman",
+    "fontSize": 25,
+    "padding": 0,
+		"align":"left"
+  },
+  "h2": {
+    "font": "Times-Roman",
+    "fontSize": 18,
+    "padding": 0,
+		"align":"left"
+  },
+  "h3": {
+    "font": "Times-Roman",
+    "fontSize": 18,
+    "padding": 10,
+		"align":"left"
+  },
+  "h4": {
+    "font": "Times-Roman",
+    "fontSize": 15,
+    "padding": 15,
+		"align":"left"
+  },
+  "para": {
+    "font": "Times-Roman",
+    "fontSize": 10,
+    "padding": 5,
+		"align":"left"
+  },
+  "code": {
+    "font": "Times-Roman",
+    "fontSize": 9,
+		"align":"left",
+		"padding":0
+  },
+  "code_block": {
+    "padding": 0,
+    "background": "#2c2c2c",
+		"align":"left"
+  },
+  "inlinecode": {
+    "font": "Times-Roman",
+    "fontSize": 10,
+		"padding":0
+  },
+	"bulletlist":{
+	  "padding":0
+	},
+  "listitem": {
+    "font": "Times-Roman",
+    "fontSize": 10,
+    "padding": 0,
+		"align":"left",
+		"bullet":{
+			"1": "circle",
+		  "2": "square",
+			"3": "dash"
+		}
+  },
+  "link": {
+    "font": "Times-Roman",
+    "fontSize": 10,
+    "color": "blue",
+    "underline": true,
+		"padding":0
+  },
+	"strong":{
+		"font":"Times-Bold",
+		"padding":0
+	},
+	"em":{
+	  "font":"Times-Italic",
+		"padding":0
+	},
+	"blockquote":{
+		"font":"Helvetica",
+		"padding":10
+	}
+}

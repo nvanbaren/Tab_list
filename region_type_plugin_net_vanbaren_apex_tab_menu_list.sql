@@ -362,7 +362,7 @@ wwv_flow_api.create_plugin (
 '      end loop;'||unistr('\000a')||
 '    end if;      '||unistr('\000a')||
 '    '||unistr('\000a')||
-'    l_is_current := (l_pat_table(k).current_for_tabset = nvl(l_current_tab_set,''$''));'||unistr('\000a')||
+'    l_is_current := (l_pat_table(k).current_for_tabset = nvl(l_current_tab_set,''!''));'||unistr('\000a')||
 '    if l_tab_table.count = 1'||unistr('\000a')||
 '       and'||unistr('\000a')||
 '       l_include_single = ''N'''||unistr('\000a')||
