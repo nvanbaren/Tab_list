@@ -228,7 +228,8 @@ module.exports = function(grunt) {
 			}
 		},
 		cleanFile:{
-		  split: ["Application/f2000.sql"]
+		  split: ["Application/f2000.sql"],
+			release:["guide.pdf"]
 		},
 		replace:{
 			generate:{
@@ -271,6 +272,35 @@ module.exports = function(grunt) {
 						to:"--"
 					}
 				]
+			},
+			release:{
+				src:["Build/release_plugin_template.sql"],
+				dest:["region_type_plugin_net_vanbaren_apex_tab_menu_list.sql"],
+				replacements:[
+					{
+						from:"/*CODE*/",
+						to:function(){
+						    dummyCharacter = String.fromCharCode(2580);
+								regexpDummyCharacter = new RegExp(dummyCharacter,"g")
+								sourceFile  = grunt.file.read("Source/sql/APR$TAB_MENU_LIST.sql");
+								pluginFile  = grunt.file.read("Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list.sql");
+								licenseFile = grunt.file.read("MIT-LICENSE.txt");
+								grunt.verbose.write("Files read");
+								sourceFile = sourceFile.replace(/^create or replace /im,"");
+								sourceFile = sourceFile.replace(/^\/$/m,"");
+						    sourceFile = sourceFile.replace(/'/g,"''");
+								sourceFile = sourceFile.replace(/\n/g,"'||unistr('\\000a')||\n'");
+								/*$ plays havoc replace with unused character after inserting in pluginFile change back*/
+								sourceFile = sourceFile.replace(/\$/g,dummyCharacter);
+						    grunt.verbose.write("sourceFile replacements done");
+								pluginFile = pluginFile.replace("/*CODE*/",sourceFile);
+								pluginFile = pluginFile.replace(regexpDummyCharacter,'$');
+								pluginFile = pluginFile.replace("/*LICENSE*/",licenseFile);								
+								grunt.verbose.write("pluginFile replacements done");
+                return pluginFile;							
+						}
+					}
+				]
 			}
 		},	
 		readme_generator: {
@@ -295,6 +325,21 @@ module.exports = function(grunt) {
 					"license.md": "License MIT"
 				}
 			}
+		},
+		zip:{
+		  release:{
+				dest:"release/<%= pkg.name %>_<%= pkg.version%>"+".zip",
+				src:["Source/**","region_type_plugin_net_vanbaren_apex_tab_menu_list.sql","guide.pdf"]
+			}
+		},
+		pdfgenerator:{
+		  release:{
+				src:['Documentation/Usage.md','Documentation/Examples.md','Documentation/Contribute.md'],
+				dest:'guide.pdf',
+				options: {
+				  styleFile:"Build/style.json"
+				}
+			}
 		}
   });
 	
@@ -304,28 +349,15 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-prompt');
 	grunt.loadNpmTasks('grunt-readme-generator');
+	grunt.loadNpmTasks('grunt-zip');
+	grunt.loadTasks('tasks');	
 	
-	grunt.registerTask('create-personal','Create the .personal.json file',function(){
-	  filename= '.personalsettings.json';
-		grunt.file.write(filename,JSON.stringify(grunt.config('personal')));
-	});
- 
-  grunt.registerMultiTask('setEnvironment','Set a enviroment variable',function(){
-	  /*Set an environment variable*/
-		console.log(this.target+'  '+this.data);
-		process.env[this.target] = this.data;
-	});
 	
-	grunt.registerMultiTask('cleanFile','Delete a file',function(){
-	  var fs = require('fs');
-		this.filesSrc.forEach(function(filename) {
-      fs.unlinkSync(filename)
-    });
-	});
-
-	grunt.registerTask('test',['readme_generator:build']);
-  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace','cleanFile']);
+	
+	grunt.registerTask('test',['pdfgenerator','zip']);
+  grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace:generate','replace:split','cleanFile:split']);
 	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load']);
   grunt.registerTask('default', ['prompt:install','copy:load','shell:install','clean:load']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
+	grunt.registerTask('release',['build','replace:release','pdfgenerator','zip','cleanFile:release']);
 };

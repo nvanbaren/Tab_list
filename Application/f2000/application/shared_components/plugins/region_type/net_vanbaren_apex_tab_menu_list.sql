@@ -10,10 +10,13 @@ wwv_flow_api.create_plugin (
  ,p_display_name => 'Tab menu list'
  ,p_supported_ui_types => 'DESKTOP'
  ,p_image_prefix => '#PLUGIN_PREFIX#'
- ,p_render_function => 'apr$tab_menu_list.render_tab_region'
+ ,p_plsql_code => 
+'/*CODE*/'
+ ,p_render_function => 'APR$TAB_MENU_LIST'
  ,p_substitute_attributes => true
  ,p_subscribe_plugin_settings => true
- ,p_version_identifier => '0.9'
+ ,p_version_identifier => '<%= pkg.version%>'
+ ,p_plugin_comment => '/*LICENSE*/'
   );
 wwv_flow_api.create_plugin_attribute (
   p_id => 8652603686674970 + wwv_flow_api.g_id_offset

@@ -34,13 +34,121 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'No help is available for this page.'
  ,p_last_updated_by => 'NICOLETTE'
- ,p_last_upd_yyyymmddhh24miss => '20130804181352'
+ ,p_last_upd_yyyymmddhh24miss => '20141030191202'
   );
 null;
  
 end;
 /
 
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 2516509071327895 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 11,
+  p_plug_name=> 'Vertical menu (Include single tab)',
+  p_region_name=>'VERTICALMENU',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 100,
+  p_plug_new_grid         => false,
+  p_plug_new_grid_row     => true,
+  p_plug_new_grid_column  => true,
+  p_plug_display_column=> null,
+  p_plug_display_point=> 'BODY_3',
+  p_plug_item_display_point=> 'ABOVE',
+  p_plug_source=> s,
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_translate_title=> 'Y',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_plug_query_row_count_max => 500,
+  p_plug_display_condition_type => '',
+  p_plug_customized=>'0',
+  p_plug_caching=> 'NOT_CACHED',
+  p_attribute_01=> 'Vertical menu',
+  p_attribute_02 => 'Y',
+  p_attribute_03 => 'N',
+  p_plug_comment=> '');
+end;
+/
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 2517615482367636 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 11,
+  p_plug_name=> 'Vertical menu (Include single tab + parent link)',
+  p_region_name=>'VERTICALMENU',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 130,
+  p_plug_new_grid         => false,
+  p_plug_new_grid_row     => true,
+  p_plug_new_grid_column  => true,
+  p_plug_display_column=> null,
+  p_plug_display_point=> 'BODY_3',
+  p_plug_item_display_point=> 'ABOVE',
+  p_plug_source=> s,
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_translate_title=> 'Y',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_plug_query_row_count_max => 500,
+  p_plug_display_condition_type => '',
+  p_plug_customized=>'0',
+  p_plug_caching=> 'NOT_CACHED',
+  p_attribute_01=> 'Vertical menu',
+  p_attribute_02 => 'Y',
+  p_attribute_03 => 'Y',
+  p_plug_comment=> '');
+end;
+/
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 2518421154378681 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 11,
+  p_plug_name=> 'Vertical menu (Parent link)',
+  p_region_name=>'VERTICALMENU',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 110,
+  p_plug_new_grid         => false,
+  p_plug_new_grid_row     => true,
+  p_plug_new_grid_column  => true,
+  p_plug_display_column=> null,
+  p_plug_display_point=> 'BODY_3',
+  p_plug_item_display_point=> 'ABOVE',
+  p_plug_source=> s,
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_translate_title=> 'Y',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_plug_query_row_count_max => 500,
+  p_plug_display_condition_type => '',
+  p_plug_customized=>'0',
+  p_plug_caching=> 'NOT_CACHED',
+  p_attribute_01=> 'Vertical menu',
+  p_attribute_02 => 'N',
+  p_attribute_03 => 'Y',
+  p_plug_comment=> '');
+end;
+/
 declare
   s varchar2(32767) := null;
   l_clob clob;
@@ -202,7 +310,7 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'SLIDEDOWNBOX',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 100,
+  p_plug_display_sequence=> 160,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
@@ -238,7 +346,7 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'FLYOUTMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 110,
+  p_plug_display_sequence=> 170,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,

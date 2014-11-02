@@ -1,4 +1,4 @@
-Want to contribute to the plugin. Fork the repository, make the changes you feel are needed. And make pull request to see the changes merged back into the master.To make contribution easier there is chosen to not have a plugin import file in the repository but a whole apex application. The application not only holds the plugin but also holds examples of uses of the plugin. Also great for testing all the different settings.  
+Want to contribute to the plugin. Fork the repository, make the changes you feel are needed. And make pull request to see the changes merged back into the master. To make contribution easier there is chosen to not have a plugin import file in the repository but a whole apex application. The application not only holds the plugin but also holds examples of uses of the plugin. Also great for testing all the different settings.  
 Also is [grunt](http://gruntjs.com/ "grunt") used to make installation of the plugin ready for development easier. For installing the plugin on your development area run the grunt task **install**. Because all development areas are different there are several environment settings asked when running a grunt task. A lot of these are necessary for every task. Run the task **personal** to store your environment specific settings to prevent being asked every time you run a task. 
 ###Grunt###
 Grunt is used to help with the repetitive tasks such as installing or exporting the application.
@@ -6,7 +6,7 @@ For these task are several settings depend on your environment, below you will f
 Most of these settings will be the same for every run so I have created the task **personal** that will store these settings in a file.
 The passwords will not be stored.
 
-* **Workspace Workspace** in which the application should be imported.
+* **Workspace** Workspace in which the application should be imported.
 * **Application schema** The parsing schema of the application
 * **Application schema** password. The password for the parsing schema of the application.
 * **Application offset** of the id's of the different elements. Only needs to change if your not the only developer working on this plugin in the same database at the same time. 
