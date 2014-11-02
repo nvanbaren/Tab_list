@@ -11,12 +11,3 @@ wwv_flow_api.create_tab (
   p_tab_parent_tabset=>'main',
   p_tab_comment  => '');
  
- 
-end;
-/
-
-prompt  ...Application Parent Tabs
---
- 
-begin
- 

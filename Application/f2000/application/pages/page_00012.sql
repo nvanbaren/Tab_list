@@ -8,6 +8,7 @@ wwv_flow_api.create_page (
   p_flow_id => wwv_flow.g_flow_id
  ,p_id => 12
  ,p_user_interface_id => 3079567899087759 + wwv_flow_api.g_id_offset
+ ,p_tab_set => 'T_WITHCONDITION'
  ,p_name => 'List templates'
  ,p_alias => 'LISTTEMPLATES'
  ,p_step_title => 'List templates'
@@ -38,7 +39,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'No help is available for this page.'
  ,p_last_updated_by => 'NICOLETTE'
- ,p_last_upd_yyyymmddhh24miss => '20130608181337'
+ ,p_last_upd_yyyymmddhh24miss => '20141102144337'
   );
 null;
  

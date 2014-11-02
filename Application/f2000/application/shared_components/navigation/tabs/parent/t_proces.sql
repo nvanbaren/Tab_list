@@ -12,11 +12,3 @@ wwv_flow_api.create_toplevel_tab (
   p_current_on_tabset=> 'T_PROCES',
   p_tab_comment=> '');
  
- 
-end;
-/
-
-prompt  ...Shared Lists of values
---
-prompt  ...Application Trees
---

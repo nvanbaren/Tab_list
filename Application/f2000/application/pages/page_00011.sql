@@ -34,7 +34,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'No help is available for this page.'
  ,p_last_updated_by => 'NICOLETTE'
- ,p_last_upd_yyyymmddhh24miss => '20141030191202'
+ ,p_last_upd_yyyymmddhh24miss => '20141102151934'
   );
 null;
  
@@ -55,12 +55,12 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'VERTICALMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 100,
+  p_plug_display_sequence=> 120,
   p_plug_new_grid         => false,
-  p_plug_new_grid_row     => true,
+  p_plug_new_grid_row     => false,
   p_plug_new_grid_column  => true,
   p_plug_display_column=> null,
-  p_plug_display_point=> 'BODY_3',
+  p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
   p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
@@ -74,6 +74,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Vertical menu',
   p_attribute_02 => 'Y',
   p_attribute_03 => 'N',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
@@ -91,12 +92,13 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'VERTICALMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 130,
+  p_plug_display_sequence=> 150,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
+  p_plug_grid_column_span => 2,
   p_plug_display_column=> null,
-  p_plug_display_point=> 'BODY_3',
+  p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
   p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
@@ -110,6 +112,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Vertical menu',
   p_attribute_02 => 'Y',
   p_attribute_03 => 'Y',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
@@ -127,12 +130,12 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'VERTICALMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 110,
+  p_plug_display_sequence=> 130,
   p_plug_new_grid         => false,
-  p_plug_new_grid_row     => true,
+  p_plug_new_grid_row     => false,
   p_plug_new_grid_column  => true,
   p_plug_display_column=> null,
-  p_plug_display_point=> 'BODY_3',
+  p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
   p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
@@ -146,6 +149,44 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Vertical menu',
   p_attribute_02 => 'N',
   p_attribute_03 => 'Y',
+  p_attribute_04 => 'Y',
+  p_plug_comment=> '');
+end;
+/
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 2532293019317945 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 11,
+  p_plug_name=> 'Vertical menu (All settings No)',
+  p_region_name=>'HORIZONTALMENUCONDITIONS',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 160,
+  p_plug_new_grid         => false,
+  p_plug_new_grid_row     => false,
+  p_plug_new_grid_column  => true,
+  p_plug_display_column=> null,
+  p_plug_display_point=> 'REGION_POSITION_02',
+  p_plug_item_display_point=> 'ABOVE',
+  p_plug_source=> s,
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_translate_title=> 'Y',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_plug_query_row_count_max => 500,
+  p_plug_display_condition_type => '',
+  p_plug_customized=>'0',
+  p_plug_caching=> 'NOT_CACHED',
+  p_attribute_01=> 'Vertical menu',
+  p_attribute_02 => 'N',
+  p_attribute_03 => 'N',
+  p_attribute_04 => 'N',
   p_plug_comment=> '');
 end;
 /
@@ -164,7 +205,7 @@ wwv_flow_api.create_page_plug (
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
   p_plug_display_sequence=> 120,
-  p_plug_new_grid         => false,
+  p_plug_new_grid         => true,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
   p_plug_display_column=> null,
@@ -202,7 +243,7 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'PULLDOWN',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 10,
+  p_plug_display_sequence=> 180,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
@@ -221,6 +262,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Pull Down Menu',
   p_attribute_02 => 'Y',
   p_attribute_03 => 'N',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
@@ -238,7 +280,7 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'HORIZONTALMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 20,
+  p_plug_display_sequence=> 210,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
@@ -257,6 +299,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Horizontal menu',
   p_attribute_02 => 'Y',
   p_attribute_03 => 'Y',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
@@ -274,12 +317,12 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'VERTICALMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 90,
+  p_plug_display_sequence=> 110,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
   p_plug_display_column=> null,
-  p_plug_display_point=> 'BODY_3',
+  p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
   p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
@@ -293,6 +336,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Vertical menu',
   p_attribute_02 => 'N',
   p_attribute_03 => 'N',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
@@ -310,7 +354,7 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'SLIDEDOWNBOX',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 160,
+  p_plug_display_sequence=> 280,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
@@ -329,6 +373,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Slide down box',
   p_attribute_02 => 'Y',
   p_attribute_03 => 'N',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
@@ -346,7 +391,7 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'FLYOUTMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 170,
+  p_plug_display_sequence=> 290,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
@@ -365,6 +410,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Fly out',
   p_attribute_02 => 'Y',
   p_attribute_03 => 'N',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
@@ -382,7 +428,7 @@ wwv_flow_api.create_page_plug (
   p_region_name=>'BREADCRUMBMENU',
   p_escape_on_http_output=>'Y',
   p_plug_template=> 39422984254603256+ wwv_flow_api.g_id_offset,
-  p_plug_display_sequence=> 30,
+  p_plug_display_sequence=> 230,
   p_plug_new_grid         => false,
   p_plug_new_grid_row     => true,
   p_plug_new_grid_column  => true,
@@ -401,6 +447,7 @@ wwv_flow_api.create_page_plug (
   p_attribute_01=> 'Breadcrumb menu',
   p_attribute_02 => 'N',
   p_attribute_03 => 'Y',
+  p_attribute_04 => 'Y',
   p_plug_comment=> '');
 end;
 /
