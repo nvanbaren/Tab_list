@@ -59,6 +59,20 @@ wwv_flow_api.create_plugin_attribute (
  ,p_is_translatable => false
  ,p_help_text => 'Should the parent have it''s own link.'
   );
+wwv_flow_api.create_plugin_attribute (
+  p_id => 2527905766211974 + wwv_flow_api.g_id_offset
+ ,p_flow_id => wwv_flow.g_flow_id
+ ,p_plugin_id => 8652305017628821 + wwv_flow_api.g_id_offset
+ ,p_attribute_scope => 'COMPONENT'
+ ,p_attribute_sequence => 4
+ ,p_display_sequence => 40
+ ,p_prompt => 'Observe tabs conditions.'
+ ,p_attribute_type => 'CHECKBOX'
+ ,p_is_required => false
+ ,p_default_value => 'N'
+ ,p_is_translatable => false
+ ,p_help_text => 'Should the conditions of the individual tabs be observed. In other words if the condition of the tab is not met then the tab will not be rendered. For this setting to work the package APEX$CHECKS needs to be installed. You need to do this yourself. Make sure that the application parsing schema has execution rights for the package. And (public) synonyms are available when necessary.'
+  );
 null;
  
 end;

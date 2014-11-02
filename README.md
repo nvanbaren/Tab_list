@@ -28,23 +28,24 @@ To be able to use the setting **Use conditions** the package _apex$checks_ needs
   - **No** The link attribute is replaced by "#"
   - **Yes** The link of the parent tab.
   - If **include single tab** is _no_ the parent tab will have the link of the tab when there is only one tab. Even when **Parent link** is set to _no_.  
-- **Use conditions**: Should the conditions and authorization scheme be taken into while generating the tabs?  
+- **Observe tabs conditions.**: Should the conditions and authorization scheme be taken into while generating the tabs?  
   - **Yes** The conditions are taken into account meaning that when the condition is false the (parent) tab will not be generated.
-      Can only be used when the package _apex$checks_ is available for the parsing scheme.
+    Can only be used when the package _apex$checks_ is available for the parsing scheme.
   - **No** No matter the conditions or authorization all (parent) tabs are generated.
 
 ## Contribute
 [[Back To Top]](#jump-to-section)
 
-Want to contribute to the plugin. Fork the repository, make the changes you feel are needed. And make pull request to see the changes merged back into the master.To make contribution easier there is chosen to not have a plugin import file in the repository but a whole apex application. The application not only holds the plugin but also holds examples of uses of the plugin. Also great for testing all the different settings.  
-Also is [grunt](http://gruntjs.com/ "grunt") used to make installation of the plugin ready for development easier. For installing the plugin on your development area run the grunt task **install**. Because all development areas are different there are several environment settings asked when running a grunt task. A lot of these are necessary for every task. Run the task **personal** to store your environment specific settings to prevent being asked every time you run a task. 
+Want to contribute to the plugin. Fork the repository, make the changes you feel are needed. And make pull request to see the changes merged back into the master. To make contribution easier there is chosen to not have a plugin import file in the repository but a whole apex application. The application not only holds the plugin but also holds examples of uses of the plugin. Also great for testing all the different settings.  
+Also is [grunt](http://gruntjs.com/ "grunt") used to make installation of the plugin ready for development easier. For installing the plugin on your development area run the grunt task **install**. Because all development areas are different there are several environment settings asked when running a grunt task. A lot of these are necessary for every task. Run the task **personal** to store your environment specific settings to prevent being asked every time you run a task.
+ 
 ###Grunt###
 Grunt is used to help with the repetitive tasks such as installing or exporting the application.
 For these task are several settings depend on your environment, below you will find a complete list with explanation.
 Most of these settings will be the same for every run so I have created the task **personal** that will store these settings in a file.
 The passwords will not be stored.
 
-* **Workspace Workspace** in which the application should be imported.
+* **Workspace** Workspace in which the application should be imported.
 * **Application schema** The parsing schema of the application
 * **Application schema** password. The password for the parsing schema of the application.
 * **Application offset** of the id's of the different elements. Only needs to change if your not the only developer working on this plugin in the same database at the same time. 
@@ -54,12 +55,14 @@ The passwords will not be stored.
 * **Code password** Password for the schema where the code is installed. Will not be used when the code schema is the same as the application schema.
 * **Oracle home** The path of Oracle Home (server) Directory (is an environment variable)
 * **Class path** Directory path to ojdbc14.jar (is an environment variable)
+
 ###Grunt tasks
 * **Default** Installs the application and source code. Uploads the necessary files to the server.
 * **Install** Installs the application and source code. Uploads the necessary files to the server.
 * **Build** Exports the application, splits the application export file. Still to do creating the plugin import file, create the documentation form the templates and readme files. And bundle everyting in a zipfile ready to be released.
 * **Personal** Create the personal.json file with the settings specific for your environment.
-* **Load** Loads the files to the server.  
+* **Load** Loads the files to the server. 
+ 
 ###Directories###
 * **Application** Holds the splitted exported of the application that is used to build the application.
 * **Documentation** All files used for user documentation that isn't the readme of the repository.
@@ -97,4 +100,4 @@ THE SOFTWARE.
 
 
 --------
-<small>_This readme has been automatically generated by [readme generator](https://github.com/aponxi/grunt-readme-generator) on Sat Aug 02 2014 14:56:37 GMT+0200 (West-Europa (zomertijd))._</small>
+<small>_This readme has been automatically generated by [readme generator](https://github.com/aponxi/grunt-readme-generator) on Sun Nov 02 2014 16:08:17 GMT+0100 (West-Europa (standaardtijd))._</small>

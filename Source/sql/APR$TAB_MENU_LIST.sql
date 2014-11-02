@@ -133,7 +133,7 @@ return apex_plugin.t_region_render_result
   l_template_name    p_region.attribute_01%type := p_region.attribute_01;
   l_include_single   p_region.attribute_02%type := p_region.attribute_02;
   l_parent_link      p_region.attribute_03%type := p_region.attribute_03;
-  
+ 
   l_use_conditions   boolean := (p_region.attribute_04 = 'Y');
   
   r_temp             c_temp%rowtype;

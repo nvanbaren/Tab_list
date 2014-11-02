@@ -15,7 +15,7 @@ To be able to use the setting **Use conditions** the package _apex$checks_ needs
   - **No** The link attribute is replaced by "#"
   - **Yes** The link of the parent tab.
   - If **include single tab** is _no_ the parent tab will have the link of the tab when there is only one tab. Even when **Parent link** is set to _no_.  
-- **Use conditions**: Should the conditions and authorization scheme be taken into while generating the tabs?  
+- **Observe tabs conditions.**: Should the conditions and authorization scheme be taken into while generating the tabs?  
   - **Yes** The conditions are taken into account meaning that when the condition is false the (parent) tab will not be generated.
     Can only be used when the package _apex$checks_ is available for the parsing scheme.
   - **No** No matter the conditions or authorization all (parent) tabs are generated.

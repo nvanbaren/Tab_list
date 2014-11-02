@@ -18,14 +18,14 @@ prompt  APPLICATION 2000 - Tab menu list
  
 -- Application Statistics:
 --   Pages:                     10
---     Regions:                 25
+--     Regions:                 26
 --     Dynamic Actions:          1
 --   Shared Components:
 --     Logic:
 --     Navigation:
---       Parent Tabs:            4
---       Tab Sets:               4
---         Tabs:                 9
+--       Parent Tabs:            5
+--       Tab Sets:               5
+--         Tabs:                11
 --       Lists:                  2
 --       Breadcrumbs:            1
 --       NavBar Entries:         1
