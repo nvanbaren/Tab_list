@@ -60,6 +60,7 @@ The passwords will not be stored.
 * **Build** Exports the application, splits the application export file. Still to do creating the plugin import file, create the documentation form the templates and readme files. And bundle everyting in a zipfile ready to be released.
 * **Personal** Create the personal.json file with the settings specific for your environment.
 * **Load** Loads the files to the server.
+
 ###Directories###
 * **Application** Holds the splitted exported of the application that is used to build the application.
 * **Documentation** All files used for user documentation that isn't the readme of the repository.
