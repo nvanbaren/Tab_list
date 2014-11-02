@@ -304,7 +304,7 @@ module.exports = function(grunt) {
 			}
 		},	
 		readme_generator: {
-			build : { 
+			release : { 
 				options: {
 					// Task-specific options go here.
 					readme_folder: "Documentation",
@@ -359,5 +359,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load']);
   grunt.registerTask('default', ['prompt:install','copy:load','shell:install','clean:load']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
-	grunt.registerTask('release',['build','replace:release','pdfgenerator','zip','cleanFile:release']);
+	grunt.registerTask('release',['build','replace:release','pdfgenerator','readme_generator','zip','cleanFile:release']);
 };
