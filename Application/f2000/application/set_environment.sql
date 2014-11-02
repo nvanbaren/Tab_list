@@ -18,7 +18,7 @@ prompt  APPLICATION 2000 - Tab menu list
  
 -- Application Statistics:
 --   Pages:                     10
---     Regions:                 22
+--     Regions:                 25
 --     Dynamic Actions:          1
 --   Shared Components:
 --     Logic:

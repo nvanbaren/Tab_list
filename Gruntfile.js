@@ -334,7 +334,7 @@ module.exports = function(grunt) {
 		},
 		pdfgenerator:{
 		  release:{
-				src:['Documentation/Usage.md','Documentation/Contribute.md'],
+				src:['Documentation/Usage.md','Documentation/Examples.md','Documentation/Contribute.md'],
 				dest:'guide.pdf',
 				options: {
 				  styleFile:"Build/style.json"
@@ -352,23 +352,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-zip');
 	grunt.loadTasks('tasks');	
 	
-	grunt.registerTask('create-personal','Create the .personal.json file',function(){
-	  filename= '.personalsettings.json';
-		grunt.file.write(filename,JSON.stringify(grunt.config('personal')));
-	});
- 
-  grunt.registerMultiTask('setEnvironment','Set a enviroment variable',function(){
-	  /*Set an environment variable*/
-		console.log(this.target+'  '+this.data);
-		process.env[this.target] = this.data;
-	});
 	
-	grunt.registerMultiTask('cleanFile','Delete a file',function(){
-	  var fs = require('fs');
-		this.filesSrc.forEach(function(filename) {
-      fs.unlinkSync(filename)
-    });
-	});
 	
 	grunt.registerTask('test',['pdfgenerator','zip']);
   grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace:generate','replace:split','cleanFile:split']);

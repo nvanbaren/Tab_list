@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 	;
 	
 	renderPDF = (function(){
-	  var level, member;
+	  var level, member, inherit=[];
 		function renderPDF(markdownTree){
 			/*Init*/
 			var code, _ref;
@@ -41,11 +41,21 @@ module.exports = function(grunt) {
 				this.style = styles['h' + this.attrs.level]||styles.para;
 			} else {
 				this.style = styles[this.type] || styles.para;
-			}		
+			}
 		};
+		
 		renderPDF.prototype.renderBlock = function(doc,parentType) {
 			var _ref, index,_i,_len,options,fragment,next_fragment,bulletStyle,_original_x,_original_y,_textWidth;
-
+			if (this.type !== 'listitem'
+			    &&
+					this.isBlock()
+					) {
+				options = this.setStyle(doc);
+				_original_x = doc.x;
+				_original_y = doc.y;
+				doc.x = doc.x + options.padding.left;
+				doc.y = doc.y + options.padding.top;
+			}
 			switch (this.type) {
 				case 'hr':
 				  grunt.log.writeln('Blok line');
@@ -56,19 +66,26 @@ module.exports = function(grunt) {
 				case 'header':
 				  this.renderText(doc,true,true);
 					break;
-				case 'blockcode':
-				 	options = this.setStyle(doc);
-					options.continued = false;
+				case 'code_block':				 	
 					fragment = this.content[0];
-					doc.text(this.text,options);
-					break;
+					/*Replace the tab with 4 space*/
+					doc.text(fragment.text.replace(/\t/g, '    '),options);
+					break;	
+				case 'blockquote': 				  
+					this.renderContainerBlock(doc);
+					doc.rect(_original_x,_original_y,2,doc.y-_original_y).fill('gray');					
+          break;	
 				case 'bulletlist':
           level = level+1;
-          this.renderContainerBlock(doc);
-          break;					
+					this.renderContainerBlock(doc);
+          break;				
+				case 'numberlist':
+				  level = level+1;
+					this.renderContainerBlock(doc);
+          break;
         case 'listitem':
 				  /*Draw bullet*/
-					_original_x = doc.x;					
+					_original_x = doc.x;
 					if (parentType == 'bulletlist') {
 					  doc.x = _original_x + 10;
 						if (this.style.bullet) {
@@ -94,23 +111,19 @@ module.exports = function(grunt) {
 						doc.x = _original_x + 30;
 						doc.text(member+'. ',options);
 					}
-          this.renderContainerBlock(doc);
+					this.renderContainerBlock(doc);
 					doc.x = _original_x;
-          break;
-				case 'numberlist':
-				  level = level+1;
-          this.renderContainerBlock(doc);
-          break;					
-        case 'blockquote':
-				  _original_x = doc.x;
-					_original_y = doc.y;
-					doc.x = doc.x + 10;
- 				  this.renderContainerBlock(doc);
-					doc.x = _original_x;
-					doc.rect(_original_x,_original_y,2,doc.y-_original_y).fill('gray');
           break;
 				default:
 					this.renderText(doc,true,true);
+			}
+			
+			if (this.type !== 'listitem'
+			    &&
+					this.isBlock()
+					) {
+				doc.x = _original_x;
+				doc.y = doc.y + options.padding.bottom;
 			}
 		};
 		
@@ -161,6 +174,7 @@ module.exports = function(grunt) {
  			
 				for (_i = 0; _i < _len;_i++) {
 					fragment = _ref[_i];
+					
 					switch (fragment.type) {
 						case 'linebreak':
 							options.continued = false;
@@ -185,7 +199,9 @@ module.exports = function(grunt) {
 							}
 							doc.text(_text,options);
 							break;
-            						
+            case 'img':
+              doc.image(fragment.attrs.href);
+              break;						
 						default:
 							if (parentBlock) {							  
 								fragment.renderText(doc,false,(_i == (_len-1)));
@@ -215,12 +231,22 @@ module.exports = function(grunt) {
 			if (this.attrs.continued != null) {
 				options.continued = this.attrs.continued;
 			}
+			options.padding = {};
+			if (typeof this.style.padding === 'undefined'){
+			  options.padding.top = (typeof this.style['padding-top'] === 'undefined')?0:this.style['padding-top'];
+				options.padding.bottom = (typeof this.style['padding-bottom'] === 'undefined')?0:this.style['padding-bottom'];
+				options.padding.left = (typeof this.style['padding-left'] === 'undefined')?0:this.style['padding-left'];
+			} else {
+			  options.padding.top = this.style.padding;
+				options.padding.bottom = this.style.padding;
+				options.padding.left = this.style.padding;
+			}
 			return options;
 		};
 		
 		renderPDF.prototype.isBlock = function(){
 		  var _result,_blocks,_numberBlocks,_i;
-			_blocks = ['bulletlist','listitem','blockquote','para','header','blockcode'];
+			_blocks = ['bulletlist','listitem','blockquote','para','header','code_block'];
 			_numberBlocks = _blocks.length;
 		  for (_i =0;_i<_numberBlocks;_i++) {
 			  if( this.type == _blocks[_i]) {
@@ -235,7 +261,7 @@ module.exports = function(grunt) {
 		
 		renderPDF.prototype.isInline = function(){
 		  var _result,_inlines,_numberInlines,_i;
-			_inlines = ['em','strong','code','link'];
+			_inlines = ['em','strong','code','link','img'];
 			_numberInlines = _inlines.length;
 		  for (_i =0; _i < _numberInlines; _i++) {
 			  if( this.type == _inlines[_i]) {
@@ -283,7 +309,7 @@ module.exports = function(grunt) {
 			return options;
 		};
 	
-		doc = new PDFDocument;
+		doc = new PDFDocument({size: "A4"});
 		doc.on('finish',function(){
 			grunt.verbose.writeln('PDF document is finished');
 			stream.end();
@@ -297,6 +323,7 @@ module.exports = function(grunt) {
 		stream = fs.createWriteStream(destFile);
 		
 		stream.on('error',function(error){
+		  done('error');
 			grunt.fail.warn(error);
 		});
 
