@@ -1,11 +1,7 @@
 {
   "name": "Tab_menu_list",
-  "version": "0.0.0",
+  "version": "0.9.0",
   "description": "Apex region plugin. Tab menu using a list template.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nvanbaren/Tab_menu_list.git"
@@ -14,7 +10,9 @@
     "Region",
     "tab",
     "menu",
-    "dropdown"
+    "dropdown",
+    "APEX",
+    "Oracle application express"
   ],
   "author": "NvanBaren",
   "license": {
@@ -28,6 +26,7 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-prompt": "~1.0.0",
+    "grunt-readme-generator": "^0.3.41",
     "grunt-shell": "~0.6.4",
     "grunt-text-replace": "~0.3.7",
     "grunt-zip": "~0.15.0",

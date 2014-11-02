@@ -593,7 +593,7 @@ wwv_flow_api.create_plugin (
  ,p_render_function => 'APR$TAB_MENU_LIST'
  ,p_substitute_attributes => true
  ,p_subscribe_plugin_settings => true
- ,p_version_identifier => '0.0.0'
+ ,p_version_identifier => '0.9.0'
  ,p_plugin_comment => 'Copyright (c) 2014 N. van Baren
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
