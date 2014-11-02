@@ -74,5 +74,7 @@ The following substitution strings can be used in the templates.
 \#TEXT# The unescaped label.  
 \#TEXT\_ESC\_SC# The escaped label.  
 \#LEVEL#  Either 1 for the parent tabs or 2 for the standard tabs.
+###Conditions
+To make it possible to observe the conditions of the individual tabs the package *APEX$CHECKS* needs to be available to the parsing schema of the application. The code of the package can be found in the source folder. The package is not installed automaticly by installing the plugin, you need to do it yourself.
 ###Files
 If specific javaScript or CSS files are needed for the correct function of your menu you can add the files to you're plugin. The files that are added will be rendered for the region. If you're menu is not necessary for all pages but multiple page templates it might be more constructive to add those files to the plugin instead of the page or template settings.
