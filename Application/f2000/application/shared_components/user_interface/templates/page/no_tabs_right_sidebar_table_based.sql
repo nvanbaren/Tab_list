@@ -10,15 +10,15 @@ wwv_flow_api.create_template (
  ,p_name => 'No Tabs - Right Sidebar (table-based)'
  ,p_is_popup => false
  ,p_javascript_file_urls => '#IMAGE_PREFIX#libraries/jquery-ui/1.8/ui/minified/jquery.ui.accordion.min.js'||unistr('\000a')||
-'&APPJAVASCRIPT.ApexLib_overload.js'
+'&APPJAVASCRIPT.Apexlib_overload.js'
  ,p_css_file_urls => 'http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/themes/&THEME./jquery-ui.css'||unistr('\000a')||
 '&APPCSS.Basic-ui.css'
  ,p_header_template => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'||unistr('\000a')||
 '<html lang="&BROWSER_LANGUAGE." xmlns="http://www.w3.org/1999/xhtml" xmlns:htmldb="http://htmldb.oracle.com" xmlns:apex="http://apex.oracle.com">'||unistr('\000a')||
 '<head>'||unistr('\000a')||
 '  <title>#TITLE#</title>'||unistr('\000a')||
-'  <link rel="icon" href="#IMAGE_PREFIX#favicon.ico" type="image/x-icon">'||unistr('\000a')||
-'  <link rel="shortcut icon" href="#IMAGE_PREFIX#favicon.ico" type="image/x-icon">'||unistr('\000a')||
+'  <link rel="icon" href=&APPIMAGES.favicon.ico" type="image/x-icon">'||unistr('\000a')||
+'  <link rel="shortcut icon" href="&APPIMAGES.favicon.ico" type="image/x-icon">'||unistr('\000a')||
 '  #APEX_CSS#'||unistr('\000a')||
 '#TEMPLATE_CSS#'||unistr('\000a')||
 '#THEME_CSS#'||unistr('\000a')||

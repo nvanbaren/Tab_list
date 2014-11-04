@@ -71,7 +71,7 @@ end;
 /
 
 prompt  ...plugins
---application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list
+--application/shared_components/plugins/region_type/net_vanbaren_apex_tab_list
  
 begin
  
@@ -79,18 +79,18 @@ wwv_flow_api.create_plugin (
   p_id => 8652305017628821 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_plugin_type => 'REGION TYPE'
- ,p_name => 'NET.VANBAREN.APEX.TAB_MENU_LIST'
+ ,p_name => 'NET.VANBAREN.APEX.TAB_LIST'
  ,p_display_name => 'Tab menu list'
  ,p_supported_ui_types => 'DESKTOP'
  ,p_image_prefix => '#PLUGIN_PREFIX#'
  ,p_plsql_code => 
 '--------------------------------------------------------'||unistr('\000a')||
-'--  DDL for Function APR$TAB_MENU_LIST'||unistr('\000a')||
+'--  DDL for Function APR$TAB_LIST'||unistr('\000a')||
 '--------------------------------------------------------'||unistr('\000a')||
 ''||unistr('\000a')||
-'function APR$TAB_MENU_LIST (p_region               in apex_plugin.t_region'||unistr('\000a')||
-'                                             ,p_plugin               in apex_plugin.t_plugin'||unistr('\000a')||
-'                                             ,p_is_printer_friendly  in boolean)'||unistr('\000a')||
+'function APR$TAB_LIST (p_region               in apex_plugin.t_region'||unistr('\000a')||
+'                                        ,p_plugin               in apex_plugin.t_plugin'||unistr('\000a')||
+'                                        ,p_is_printer_friendly  in boolean)'||unistr('\000a')||
 'return apex_plugin.t_region_render_result '||unistr('\000a')||
 '  as'||unistr('\000a')||
 '  type r_attributes is record('||unistr('\000a')||
@@ -586,14 +586,14 @@ wwv_flow_api.create_plugin (
 '    k := l_pat_table.next(k);'||unistr('\000a')||
 '  end loop;  '||unistr('\000a')||
 '  return l_return;'||unistr('\000a')||
-'end apr$tab_menu_list;'||unistr('\000a')||
+'end apr$tab_list;'||unistr('\000a')||
 ''||unistr('\000a')||
 ''||unistr('\000a')||
 ''
- ,p_render_function => 'APR$TAB_MENU_LIST'
+ ,p_render_function => 'APR$TAB_LIST'
  ,p_substitute_attributes => true
  ,p_subscribe_plugin_settings => true
- ,p_version_identifier => '0.9.1'
+ ,p_version_identifier => '0.9.2'
  ,p_plugin_comment => 'Copyright (c) 2014 N. van Baren
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

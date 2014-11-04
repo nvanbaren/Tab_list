@@ -1,9 +1,13 @@
 {
   "title": {
     "font": "Times-Roman",
-    "fontSize": 30,
-    "padding": 15,
-		"align":"left"
+    "fontSize": 50,
+    "align":"center"
+  },
+  "subtitle": {
+    "font": "Times-Italic",
+    "fontSize": 25,
+    "align":"center"
   },
   "h1": {
     "font": "Times-Roman",

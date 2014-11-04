@@ -1,5 +1,5 @@
 --application/pages/page_00011
-prompt  ...PAGE 11: Tab menu list
+prompt  ...PAGE 11: Tab list
 --
  
 begin
@@ -9,22 +9,22 @@ wwv_flow_api.create_page (
  ,p_id => 11
  ,p_user_interface_id => 3079567899087759 + wwv_flow_api.g_id_offset
  ,p_tab_set => 'T_REGION'
- ,p_name => 'Tab menu list'
- ,p_alias => 'TABMENULIST'
+ ,p_name => 'Tab list'
+ ,p_alias => 'TABLIST'
  ,p_step_title => 'Tab menu list'
  ,p_allow_duplicate_submissions => 'Y'
  ,p_step_sub_title_type => 'TEXT_WITH_SUBSTITUTIONS'
  ,p_first_item => 'NO_FIRST_ITEM'
  ,p_include_apex_css_js_yn => 'Y'
  ,p_autocomplete_on_off => 'ON'
- ,p_javascript_file_urls => '/projects/Tab_menu_list/Demo/javascript/slidebox.js'
+ ,p_javascript_file_urls => '/projects/Tab_list/Demo/javascript/slidebox.js'
  ,p_javascript_code_onload => 
 '$(function() {'||unistr('\000a')||
 '  $(''#sdt_menu > li'')'||unistr('\000a')||
 '    .bind(''mouseenter'',function(){slidebox_in(this,120);})'||unistr('\000a')||
 '    .bind(''mouseleave'',function(){slidebox_out(this,120);})'||unistr('\000a')||
 '});'
- ,p_css_file_urls => '/projects/Tab_menu_list/Demo/css/Special-lists.css'
+ ,p_css_file_urls => '/projects/Tab_list/Demo/css/Special-lists.css'
  ,p_step_template => 39658505916395976 + wwv_flow_api.g_id_offset
  ,p_page_is_public_y_n => 'N'
  ,p_protection_level => 'N'
@@ -63,7 +63,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -101,7 +101,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -138,7 +138,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -175,7 +175,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -224,7 +224,7 @@ wwv_flow_api.create_page_plug (
   p_plug_customized=>'0',
   p_plug_caching=> 'NOT_CACHED',
   p_attribute_01=> 'S',
-  p_attribute_02 => 'NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_attribute_02 => 'NET.VANBAREN.APEX.TAB_LIST',
   p_attribute_03 => 'C',
   p_plug_comment=> '');
 end;
@@ -251,7 +251,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'BODY_3',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -288,7 +288,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'BODY_3',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -325,7 +325,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'REGION_POSITION_02',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -362,7 +362,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'BODY_3',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -399,7 +399,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'BODY_3',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
@@ -436,7 +436,7 @@ wwv_flow_api.create_page_plug (
   p_plug_display_point=> 'BODY_3',
   p_plug_item_display_point=> 'ABOVE',
   p_plug_source=> s,
-  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_MENU_LIST',
+  p_plug_source_type=> 'PLUGIN_NET.VANBAREN.APEX.TAB_LIST',
   p_translate_title=> 'Y',
   p_plug_query_row_template=> 1,
   p_plug_query_headings_type=> 'COLON_DELMITED_LIST',

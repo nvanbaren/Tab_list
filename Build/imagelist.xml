@@ -14,8 +14,9 @@
         <directory>Source/javascript</directory>
     </directories>
     <files>
+	    <file>Application/images/favicon.ico</file>
         <file>Application/css/Basic-ui.css</file>
-        <file>Application/javascript/Apexlib_overload.js</file>
+        <file>Application/javascript/Apexlib_overload.js</file>		
         <file>Demo/css/Special-lists.css</file>
         <file>Demo/javascript/slidebox.js</file>
         <file>Demo/images/1.jpg</file>

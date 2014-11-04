@@ -1,9 +1,9 @@
 --application/set_environment
-prompt  APPLICATION 2000 - Tab menu list
+prompt  APPLICATION 2000 - Tab list
 --
 -- Application Export:
 --   Application:     2000
---   Name:            Tab menu list
+--   Name:            Tab list
 --
 --   Exported By:     HR
 --   Flashback:       0
@@ -25,7 +25,7 @@ prompt  APPLICATION 2000 - Tab menu list
 --     Navigation:
 --       Parent Tabs:            5
 --       Tab Sets:               5
---         Tabs:                11
+--         Tabs:                10
 --       Lists:                  2
 --       Breadcrumbs:            1
 --       NavBar Entries:         1

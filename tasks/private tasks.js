@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
 	grunt.registerTask('create-personal','Create the .personal.json file',function(){
-		filename= '.personalsettings.json';
+		filename= 'Build\\.personalsettings.json';
 		grunt.file.write(filename,JSON.stringify(grunt.config('personal')));
 	});
 

@@ -73,10 +73,9 @@
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_set_multiple_values_mr.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_cascading_lov_mr.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_selectlist_domain.sql
-@Application/f2000/application/shared_components/navigation/tabs/standard/t_withcondition.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_dynamic_message.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_tab_menu.sql
-@Application/f2000/application/shared_components/navigation/tabs/standard/t_tab_menu_list.sql
+@Application/f2000/application/shared_components/navigation/tabs/standard/t_tab_list.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_dialog_region.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_demoplugin.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_withcondition.sql
@@ -121,7 +120,7 @@
 @Application/f2000/application/shared_components/globalization/messages.sql
 @Application/f2000/application/shared_components/globalization/dyntranslations.sql
 @Application/f2000/application/shared_components/security/authentication/no_authentication.sql
-@Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list.sql
+@Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_list.sql
 @Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_demo_plugin.sql
 @Application/f2000/application/deployment/definition.sql
 @Application/f2000/application/deployment/install.sql

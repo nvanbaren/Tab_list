@@ -1,11 +1,11 @@
-To demonstrate the possibilities of the plugin on page 11 the plugin is used several times with different settings.
+To demonstrate the possibilities of the plugin the plugin is used several times with different settings in the [demo application](https://apex.oracle.com/pls/apex/f?p=VANBAREN_PLUGINS:TABLIST:0:::::?cs=VANBAREN).
 The most important settings is _Template_. This settings controls the HTML that is rendered for the region.
 Together with CSS it determines how the menu will look like. The template is the name of a list template of the current menu.
 The name is case sensitive. When the list template can't be found then there will be nothing rendered.
 The other 2 settings influence how the menu behaves.  
 In the case that the parent tab has only one corresponding standard tab it might be unnecessary to display the standard tab. The parent tab should than link to the destination of the standard tab. This behaviour is accomplished by the setting _Include single tab_ . Setting this attribute to Yes will override the _Parent link_ setting for those parent tabs with only a single standard tab. Meaning that these parent tabs get the link of the standard tab even when the _Parent link_ is set to *No*.  
 Depending on the use of the menu it might be undesirable for the main menu items to navigate. The attribute _Parent link_ determines if the main menu items cq. parent tabs should have a link. If _Parent link_ is set to *No* the #LINK# substitution string is replaced with #. If the _Include single tab_ is set to NO the parent link will be rendered even when the  _Parent link_ is set to *No*.
-###Template
+##Template
 The list template consists of multiple sub templates which together render the complete region.
 The sub templates render in the following way
 
@@ -74,7 +74,7 @@ The following substitution strings can be used in the templates.
 \#TEXT# The unescaped label.  
 \#TEXT\_ESC\_SC# The escaped label.  
 \#LEVEL#  Either 1 for the parent tabs or 2 for the standard tabs.
-###Conditions
-To make it possible to observe the conditions of the individual tabs the package *APEX$CHECKS* needs to be available to the parsing schema of the application. The code of the package can be found in the source folder. The package is not installed automaticly by installing the plugin, you need to do it yourself.
-###Files
+##Conditions
+To make it possible to observe the conditions of the individual tabs the package *APEX$CHECKS* needs to be available to the parsing schema of the application. The code of the package can be found in the source folder. The package is not installed automaticly by installing the plugin, you need to do it yourself. Conditions are not the only settings that determine if a tab should be rendered. The build status and authorization settings are also taken into account. 
+##Files
 If specific javaScript or CSS files are needed for the correct function of your menu you can add the files to you're plugin. The files that are added will be rendered for the region. If you're menu is not necessary for all pages but multiple page templates it might be more constructive to add those files to the plugin instead of the page or template settings.

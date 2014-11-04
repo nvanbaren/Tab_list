@@ -18,29 +18,29 @@ begin
     apex_application_install.set_workspace_id( l_workspace_id );
     apex_application_install.set_offset(&offset);
     apex_application_install.set_schema('&app_schema');
-    apex_application_install.set_application_alias( 't_TAB_MENU_LIST' );
+    apex_application_install.set_application_alias( 'T_TAB_LIST' );
     apex_application_install.set_application_id(2000);
 end;
 /
 prompt install application
-@@Application/f2000/install.sql
+@Application/f2000/install.sql
 commit;
 /
 prompt install code
 connect &code_schema/&code_password@//&database_url
-@@Source\sql\apex$checks.sql
-@@Source\sql\apr$tab_menu_list.sql
+@Source\sql\apex$checks.sql
+@Source\sql\apr$tab_list.sql
 prompt code installed
 
 connect sys/&sys_password@//&database_url as sysdba
 
-create directory PLUGIN_FILES as 'c:\temp\Tab_menu_list'
+create directory PLUGIN_FILES as 'c:\temp\Tab_list'
 /
 
 declare
     file_list               varchar2(30) default 'imagelist.xml';
     upload_directory_name   varchar2(30) default 'PLUGIN_FILES';
-    plugin_folder           varchar2(30) default 'Tab_menu_list';
+    plugin_folder           varchar2(30) default 'Tab_list';
     plugin_location         varchar2(30) default 'projects';
     repository_folder_path  varchar2(30);
     pathseperator varchar2(1) := '/';

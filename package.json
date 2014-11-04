@@ -1,10 +1,10 @@
 {
-  "name": "Tab_menu_list",
-  "version": "0.9.1",
+  "name": "Tab list",
+  "version": "0.9.2",
   "description": "Apex region plugin. Tab menu using a list template.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nvanbaren/Tab_menu_list.git"
+    "url": "https://github.com/nvanbaren/Tab_list.git"
   },
   "keywords": [
     "Region",
@@ -17,7 +17,7 @@
   "author": "NvanBaren",
   "license": {
     "type": "MIT",
-    "url": "https://github.com/nvanbaren/Tab_menu_list/blob/master/MIT-LICENSE.txt"
+    "url": "https://github.com/nvanbaren/Tab_list/blob/master/MIT-LICENSE.txt"
   },
   "gitHead": "bc7a1cf62bd0c4f6ca1a5d8ad48fccdedecc619e",
   "devDependencies": {

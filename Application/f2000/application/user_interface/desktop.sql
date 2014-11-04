@@ -8,7 +8,7 @@ wwv_flow_api.create_user_interface (
  ,p_use_auto_detect => true
  ,p_is_default => true
  ,p_theme_id => 102
- ,p_home_url => 'f?p=&APP_ID.:TABMENULIST:&SESSION.'
+ ,p_home_url => 'f?p=&APP_ID.:TABLIST:&SESSION.'
  ,p_login_url => 'f?p=&APP_ID.:LOGIN_DESKTOP:&SESSION.'
   );
 null;

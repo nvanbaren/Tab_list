@@ -1,4 +1,4 @@
---application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list
+--application/shared_components/plugins/region_type/net_vanbaren_apex_tab_list
  
 begin
  
@@ -6,13 +6,13 @@ wwv_flow_api.create_plugin (
   p_id => 8652305017628821 + wwv_flow_api.g_id_offset
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_plugin_type => 'REGION TYPE'
- ,p_name => 'NET.VANBAREN.APEX.TAB_MENU_LIST'
+ ,p_name => 'NET.VANBAREN.APEX.TAB_LIST'
  ,p_display_name => 'Tab menu list'
  ,p_supported_ui_types => 'DESKTOP'
  ,p_image_prefix => '#PLUGIN_PREFIX#'
  ,p_plsql_code => 
 '/*CODE*/'
- ,p_render_function => 'APR$TAB_MENU_LIST'
+ ,p_render_function => 'APR$TAB_LIST'
  ,p_substitute_attributes => true
  ,p_subscribe_plugin_settings => true
  ,p_version_identifier => '<%= pkg.version%>'

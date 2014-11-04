@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-	  personal: grunt.file.readJSON('.personalsettings.json'),
+	  personal: grunt.file.readJSON('Build\\.personalsettings.json'),
     pkg: grunt.file.readJSON('package.json'),
 		prompt: {
 			create:{
@@ -196,7 +196,7 @@ module.exports = function(grunt) {
 					  }
 				},
 				install: {
-				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @install_app.sql <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>',
+				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @build\\install_app.sql <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>',
 						options:{
 						  stdout: true,
 						  stderr: true,
@@ -208,16 +208,17 @@ module.exports = function(grunt) {
 		copy: {
 			load: {
 				files: [
-					{src: ['imagelist.xml'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Application\\images/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Application\\css/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Application\\javascript/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Demo\\images/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Demo\\css/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Demo\\javascript/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Source\\images/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Source\\css/**'], dest: 'c:\\temp\\Tab_menu_list/'},
-					{src: ['Source\\javascript/**'], dest: 'c:\\temp\\Tab_menu_list/'}
+					{src: ['Build\\imagelist.xml'], dest: 'imagelist.xml'},
+					{src: ['imagelist.xml'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Application\\images/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Application\\css/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Application\\javascript/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Demo\\images/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Demo\\css/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Demo\\javascript/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Source\\images/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Source\\css/**'], dest: 'c:\\temp\\Tab_list/'},
+					{src: ['Source\\javascript/**'], dest: 'c:\\temp\\Tab_list/'}
 				]
 			}
 		},
@@ -229,7 +230,8 @@ module.exports = function(grunt) {
 		},
 		cleanFile:{
 		  split: ["Application/f2000.sql"],
-			release:["guide.pdf"]
+			release:["guide.pdf","region_type_plugin_net_vanbaren_apex_tab_menu_list.sql"],
+			load:["imagelist.xml"]
 		},
 		replace:{
 			generate:{
@@ -275,15 +277,15 @@ module.exports = function(grunt) {
 			},
 			release:{
 				src:["Build/release_plugin_template.sql"],
-				dest:["region_type_plugin_net_vanbaren_apex_tab_menu_list.sql"],
+				dest:["region_type_plugin_net_vanbaren_apex_tab_list.sql"],
 				replacements:[
 					{
 						from:"/*CODE*/",
 						to:function(){
 						    dummyCharacter = String.fromCharCode(2580);
 								regexpDummyCharacter = new RegExp(dummyCharacter,"g")
-								sourceFile  = grunt.file.read("Source/sql/APR$TAB_MENU_LIST.sql");
-								pluginFile  = grunt.file.read("Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_menu_list.sql");
+								sourceFile  = grunt.file.read("Source/sql/APR$TAB_LIST.sql");
+								pluginFile  = grunt.file.read("Application/f2000/application/shared_components/plugins/region_type/net_vanbaren_apex_tab_list.sql");
 								licenseFile = grunt.file.read("MIT-LICENSE.txt");
 								grunt.verbose.write("Files read");
 								sourceFile = sourceFile.replace(/^create or replace /im,"");
@@ -315,12 +317,13 @@ module.exports = function(grunt) {
 					has_travis: false,
 					generate_footer: true,
 					generate_title: true,
-					package_title: "Tab list menu"
+					package_title: "Tab list"
 				},
 				order: {
 					// Title of the piece and the File name goes here
 					// "Filename" : "Title"
 					"usage.md": "Usage",
+					"FAQ.md":"FAQ",
 					"contribute.md": "Contribute",
 					"license.md": "License MIT"
 				}
@@ -329,7 +332,7 @@ module.exports = function(grunt) {
 		zip:{
 		  release:{
 				dest:"release/<%= pkg.name %>_<%= pkg.version%>"+".zip",
-				src:["Source/**","region_type_plugin_net_vanbaren_apex_tab_menu_list.sql","guide.pdf"]
+				src:["Source/**","region_type_plugin_net_vanbaren_apex_tab_list.sql","guide.pdf"]
 			}
 		},
 		pdfgenerator:{
@@ -337,7 +340,15 @@ module.exports = function(grunt) {
 				src:['Documentation/Usage.md','Documentation/Examples.md','Documentation/Contribute.md'],
 				dest:'guide.pdf',
 				options: {
-				  styleFile:"Build/style.json"
+				  styleFile: "Build/style.json",
+					chapter: {
+					  titles: {"Usage.md":"Description","Examples.md":"Examples","Contribute.md":"Contribute"},
+						style: "h1"
+					},
+					table_of_contents:true,
+					TOCstyle:"para",
+					title:{style:"title",text:'Tab list'},
+					subtitle:{style:"subtitle",text:"<%= pkg.description%>"}
 				}
 			}
 		}
@@ -350,14 +361,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-prompt');
 	grunt.loadNpmTasks('grunt-readme-generator');
 	grunt.loadNpmTasks('grunt-zip');
-	grunt.loadTasks('tasks');	
-	
+	grunt.loadTasks('tasks');
 	
 	
 	grunt.registerTask('test',['pdfgenerator','zip']);
   grunt.registerTask('build',  ['prompt:build','setEnvironment','shell:build','replace:generate','replace:split','cleanFile:split']);
-	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load']);
-  grunt.registerTask('default', ['prompt:install','copy:load','shell:install','clean:load']);
+	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load','cleanFile:load']);
+  grunt.registerTask('default', ['install']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
 	grunt.registerTask('release',['build','replace:release','pdfgenerator','readme_generator','zip','cleanFile:release']);
 };

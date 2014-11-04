@@ -279,7 +279,7 @@ module.exports = function(grunt) {
 	
 
 	
-	renderPDFDocument = function(filesSrc,destFile,done) {
+	renderPDFDocument = function(filesSrc,destFile,done,taskOptions) {
 		var node,
     		tree, 
 				_results,
@@ -287,29 +287,42 @@ module.exports = function(grunt) {
 				stream,
 				counter = 0,
 				options,
-				setTitleOptions;
+				setOptions,
+				TOC=[],
+				TOCpage,
+				pageBuffer;
 		
-		setTitleOptions = function() {
-			var options,titleStyle;
-			titleStyle = styles['title'];
-			if (titleStyle.font) {
-					doc.font(titleStyle.font);
-				}
-				if (titleStyle.fontSize) {
-					doc.fontSize(titleStyle.fontSize);
-				}
-				if (titleStyle.color) {
-					doc.fillColor(titleStyle.color);
-				} else {
-					doc.fillColor('black');
-				}
-				options = {};
-				options.align = titleStyle.align;
-				options.continued = false;
+		setOptions = function(style) {
+			var options,styleSettings;
+			styleSettings = styles[style];
+			if (styleSettings.font) {
+				doc.font(styleSettings.font);
+			}
+			if (styleSettings.fontSize) {
+				doc.fontSize(styleSettings.fontSize);
+			}
+			if (styleSettings.color) {
+				doc.fillColor(styleSettings.color);
+			} else {
+				doc.fillColor('black');
+			}
+			options = {};
+			options.align = styleSettings.align;
+			options.continued = false;
+			options.padding = {};
+			if (typeof styleSettings.padding === 'undefined'){
+				options.padding.top = (typeof styleSettings['padding-top'] === 'undefined')?0:styleSettings['padding-top'];
+				options.padding.bottom = (typeof styleSettings['padding-bottom'] === 'undefined')?0:styleSettings['padding-bottom'];
+				options.padding.left = (typeof styleSettings['padding-left'] === 'undefined')?0:styleSettings['padding-left'];
+			} else {
+				options.padding.top = styleSettings.padding;
+				options.padding.bottom = styleSettings.padding;
+				options.padding.left = styleSettings.padding;
+			}
 			return options;
 		};
 	
-		doc = new PDFDocument({size: "A4"});
+		doc = new PDFDocument({size: "A4",bufferPages:true});
 		doc.on('finish',function(){
 			grunt.verbose.writeln('PDF document is finished');
 			stream.end();
@@ -334,15 +347,40 @@ module.exports = function(grunt) {
 		
 		/*The actual creating of the pdf file*/
 		doc.pipe(stream);
+		/*Create title page*/
+		options = setOptions(taskOptions.title.style);
+		doc.y = (doc.page.height/4)-doc.heightOfString(taskOptions.title.text,options);
+		doc.text(taskOptions.title.text,options);
+		if (typeof taskOptions.subtitle !== "undefined") {
+		  options = setOptions(taskOptions.subtitle.style);
+			doc.text(taskOptions.subtitle.text,options);
+		}
+		options = setOptions("para");
+		options.align= "right";
+		doc.y = (doc.page.height-doc.page.margins.bottom)-doc.heightOfString('Version: '+grunt.config.get("version"),options);
+		doc.text('Version: '+grunt.config.get("pkg.version"),options);
+		/*Table of contents*/
+		if (taskOptions.table_of_contents){
+		  TOCpage = doc.addPage();
+		}
 		filesSrc.forEach(function(file) {
-			var title = file.match(/\/([^/]*)$/)[1]; 
-			title = title.substr(0, title.lastIndexOf('.'));
+			var fileName,title;
 			grunt.verbose.writeln('Render file: '+file);
-			counter++;
-			if (counter>1) {
-				doc.addPage();
-			}	
-			options = setTitleOptions();
+			counter ++;
+			fileName = file.match(/\/([^/]*)$/)[1];
+      title = taskOptions.chapter.titles[fileName];
+      if ( typeof title ==='undefined') {		
+			  title = fileName.substr(0, fileName.lastIndexOf('.'));
+			}
+			doc.addPage();
+			
+			if (taskOptions.table_of_contents){
+			  /*Check the page number*/
+				pageBuffer = doc.bufferedPageRange();
+				TOC.push({"title":title,pagenr:pageBuffer.count});
+			}
+				
+			options = setOptions(taskOptions.chapter.style);
 			doc.text(title,options);			
 			tree = markdown.parse(fs.readFileSync(file, 'utf8'));
 			tree.shift();
@@ -356,6 +394,26 @@ module.exports = function(grunt) {
 				}
 			}
 		});
+		if (taskOptions.table_of_contents){
+		  /*Create the Table of contents on the second page*/
+			doc.switchToPage(1);
+			doc.y = doc.page.margins.top;
+			doc.x = doc.page.margins.left;
+			/*Print the table*/
+			options = setOptions(taskOptions.chapter.style);
+			doc.text('Table of contents',options);
+			options = setOptions(taskOptions.TOCstyle);
+			for(var i=0; i<TOC.length; i++){
+			  /*Print the chapter title on the left*/
+			  options.continued=true;
+				options.align = 'left';
+			  doc.text(TOC[i].title,options);
+				/*Print the page number on the right*/
+				options.continued=false;
+				options.align = 'right';
+				doc.text(TOC[i].pagenr,options);
+			}		
+		}
 		doc.end();			
 		return _results;
 	};
@@ -364,13 +422,17 @@ module.exports = function(grunt) {
 	  var options,
 		    done
 				;
-		
+
 		done = this.async();
 		options = this.options({
-			styleFile:"Build/style.json"
+			styleFile:"Build/style.json",
+			chapter:{
+			  titles:{},
+				style:"h1"
+			}
 		});
 		
 		styles =  grunt.file.readJSON(options.styleFile);
-		renderPDFDocument(this.filesSrc,this.file.dest,done);
+		renderPDFDocument(this.filesSrc,this.file.dest,done,options);
 	});
 };
