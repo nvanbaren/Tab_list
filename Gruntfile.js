@@ -1,4 +1,15 @@
 module.exports = function(grunt) {
+  function get_install_command(code_user,application_user){
+	  var filename;
+		grunt.verbose.writeln('Get install command');
+		if (code_user ===application_user) {
+		  filename = 'build\\install_app.sql';
+		} else {
+		  filename = 'build\\install_app_diff.sql';
+		}
+		return 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @'+filename+' <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>';
+	}
+	grunt.verbose.writeln('Start config');
   grunt.initConfig({
 	  personal: grunt.file.readJSON('Build\\.personalsettings.json'),
     pkg: grunt.file.readJSON('package.json'),
@@ -196,7 +207,7 @@ module.exports = function(grunt) {
 					  }
 				},
 				install: {
-				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @build\\install_app.sql <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>',
+				    command:get_install_command('<%= personal.code.user%>,<%= personal.application.user%>'),
 						options:{
 						  stdout: true,
 						  stderr: true,
