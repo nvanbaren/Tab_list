@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 	  var filename;
 		grunt.verbose.writeln('Get install command');
 		if (code_user ===application_user) {
-		  filename = 'build\\install_app.sql';
+		  filename = 'build\\install_app_same.sql';
 		} else {
 		  filename = 'build\\install_app_diff.sql';
 		}
@@ -214,6 +214,17 @@ module.exports = function(grunt) {
 						  stdin: true,
 						  failOnError: true
 						}
+				},
+				application: {
+            command: ['cd Application'
+						         ,'java oracle.apex.APEXExport -db <%= personal.database.url %>:<%= personal.database.host %> -user <%= personal.application.user %> -password <%= personal.application.password %> -applicationid 2000'
+										 ].join('&&'),
+            options:{
+						  stdout: true,
+						  stderr: true,
+						  stdin:  true,
+						  failOnError: true
+					  }
 				}
     },
 		copy: {
@@ -314,6 +325,20 @@ module.exports = function(grunt) {
 						}
 					}
 				]
+			},
+			application:{
+			  src:['Application\\f2000.sql'],
+				overwrite:true,
+				replacements:[
+				  {
+					  from:"pkg.name",
+						to:"<%= pkg.name %>"
+					},
+					{
+					  from:"pkg.version",
+						to:"<%= pkg.version %>"
+					}
+				]
 			}
 		},	
 		readme_generator: {
@@ -380,5 +405,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load','cleanFile:load']);
   grunt.registerTask('default', ['install']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
+	grunt.registerTask('application',['prompt:build','setEnvironment','shell:application','replace:application']);
 	grunt.registerTask('release',['build','replace:release','pdfgenerator','readme_generator','zip','cleanFile:release']);
 };

@@ -6,7 +6,7 @@ DEFINE code_schema ='&5'
 DEFINE code_password = '&6'
 DEFINE sys_password = '&7'
 
-@@install_app.sql &workspace_name &offset &database_url &app_schema &code_schema &code_password &sys_password
+@Build\install_app.sql &workspace_name &offset &database_url &app_schema &code_schema &code_password &sys_password
 
 prompt install code
 connect &code_schema/&code_password@//&database_url

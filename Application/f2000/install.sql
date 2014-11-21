@@ -69,6 +69,7 @@
 @Application/f2000/application/plug-in_setting/item_type_native_yes_no.sql
 @Application/f2000/application/plug-in_setting/region_type_plugin_net_vanbaren_apex_demo_plugin.sql
 @Application/f2000/application/shared_components/navigation/navigation_bar.sql
+@Application/f2000/application/shared_components/logic/application_computations/p0_theme.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_get_adres.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_set_multiple_values_mr.sql
 @Application/f2000/application/shared_components/navigation/tabs/standard/t_cascading_lov_mr.sql
@@ -84,7 +85,9 @@
 @Application/f2000/application/shared_components/navigation/tabs/parent/t_region.sql
 @Application/f2000/application/shared_components/navigation/tabs/parent/t_proces.sql
 @Application/f2000/application/shared_components/navigation/tabs/parent/t_withcondition.sql
+@Application/f2000/application/shared_components/user_interface/lov/jquery_ui_themes.sql
 @Application/f2000/application/pages/page_groups.sql
+@Application/f2000/application/pages/page_00000.sql
 @Application/f2000/application/pages/page_00002.sql
 @Application/f2000/application/pages/page_00003.sql
 @Application/f2000/application/pages/page_00004.sql
