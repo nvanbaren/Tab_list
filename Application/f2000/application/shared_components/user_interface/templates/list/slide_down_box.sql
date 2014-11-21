@@ -24,7 +24,7 @@ declare
 begin
 t:=t||'<li>'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link ">#TEXT#</span>'||unistr('\000a')||
@@ -35,7 +35,7 @@ t:=t||'<li>'||unistr('\000a')||
 
 t2:=t2||'<li >'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link">#TEXT#</span>'||unistr('\000a')||
@@ -50,7 +50,7 @@ t4:=t4||'<a href="#LINK#" class="Tab">#TEXT#</a>';
 
 t5:=t5||'<li>'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link ">#TEXT#</span>'||unistr('\000a')||
@@ -61,7 +61,7 @@ t5:=t5||'<li>'||unistr('\000a')||
 
 t6:=t6||'<li>'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link ">#TEXT#</span>'||unistr('\000a')||

@@ -17,11 +17,13 @@ prompt  APPLICATION 2000 - Tab list
 --   Using SQL*Plus as the Oracle user APEX_040200 or as the owner (parsing schema) of the application
  
 -- Application Statistics:
---   Pages:                     10
---     Regions:                 26
+--   Pages:                     11
+--     Items:                    2
+--     Regions:                 27
 --     Dynamic Actions:          1
 --   Shared Components:
 --     Logic:
+--       Computations:           1
 --     Navigation:
 --       Parent Tabs:            5
 --       Tab Sets:               5
@@ -41,6 +43,7 @@ prompt  APPLICATION 2000 - Tab list
 --         Popup LOV:            1
 --         Button:               1
 --         Report:               1
+--       LOVs:                   1
 --       Plug-ins:               2
 --     Globalization:
 --     Reports:

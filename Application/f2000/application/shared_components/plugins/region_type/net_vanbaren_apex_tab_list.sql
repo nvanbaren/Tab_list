@@ -7,7 +7,7 @@ wwv_flow_api.create_plugin (
  ,p_flow_id => wwv_flow.g_flow_id
  ,p_plugin_type => 'REGION TYPE'
  ,p_name => 'NET.VANBAREN.APEX.TAB_LIST'
- ,p_display_name => 'Tab menu list'
+ ,p_display_name => '<%= pkg.name%>'
  ,p_supported_ui_types => 'DESKTOP'
  ,p_image_prefix => '#PLUGIN_PREFIX#'
  ,p_plsql_code => 

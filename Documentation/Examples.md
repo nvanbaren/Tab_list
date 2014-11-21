@@ -1,10 +1,10 @@
-To demonstrate the possibilities of the plugin the plugin is used several times with different settings in the [demo application](https://apex.oracle.com/pls/apex/f?p=VANBAREN_PLUGINS:TABLIST:0:::::?cs=VANBAREN).
+To demonstrate the possibilities of the plugin the plugin is used several times with different settings in the [demo application](https://apex.oracle.com/pls/apex/f?p=T_TAB_LIST:TABLIST:0:::::?cs=VANBAREN).
 The most important settings is _Template_. This settings controls the HTML that is rendered for the region.
 Together with CSS it determines how the menu will look like. The template is the name of a list template of the current menu.
 The name is case sensitive. When the list template can't be found then there will be nothing rendered.
 The other 2 settings influence how the menu behaves.  
 In the case that the parent tab has only one corresponding standard tab it might be unnecessary to display the standard tab. The parent tab should than link to the destination of the standard tab. This behaviour is accomplished by the setting _Include single tab_ . Setting this attribute to Yes will override the _Parent link_ setting for those parent tabs with only a single standard tab. Meaning that these parent tabs get the link of the standard tab even when the _Parent link_ is set to *No*.  
-Depending on the use of the menu it might be undesirable for the main menu items to navigate. The attribute _Parent link_ determines if the main menu items cq. parent tabs should have a link. If _Parent link_ is set to *No* the #LINK# substitution string is replaced with #. If the _Include single tab_ is set to NO the parent link will be rendered even when the  _Parent link_ is set to *No*.
+Depending on the use of the menu it might be undesirable for the main menu items to navigate. The attribute _Parent link_ determines if the main menu items cq. parent tabs should have a link. If _Parent link_ is set to *No* the #LINK# substitution string is replaced with #. If the _Include single tab_ is set to *No* the parent link will be rendered even when the  _Parent link_ is set to *No*.
 ##Template
 The list template consists of multiple sub templates which together render the complete region.
 The sub templates render in the following way
