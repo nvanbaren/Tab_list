@@ -20,7 +20,7 @@ prompt  APPLICATION 2000 - Tab list
 --   Pages:                     11
 --     Items:                    2
 --     Regions:                 27
---     Dynamic Actions:          1
+--     Dynamic Actions:          2
 --   Shared Components:
 --     Logic:
 --       Computations:           1

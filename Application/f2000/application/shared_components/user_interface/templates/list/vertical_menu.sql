@@ -26,7 +26,7 @@ t:=t||'<li  class="ui-state-active"><a href="#LINK#"> #TEXT#</a></li>';
 
 t2:=t2||'<li class="ui-state-default"><a href="#LINK#" >#TEXT#</a></li>';
 
-t3:=t3||'<li class="ui-state-active"><a href="#LINK#">#TEXT#</a></il>';
+t3:=t3||'<li class="ui-state-active"><a href="#LINK#">#TEXT#</a></li>';
 
 t4:=t4||'<li class="ui-state-default"><a href="#LINK#" >#TEXT#</a></li>';
 
@@ -59,7 +59,6 @@ wwv_flow_api.create_list_template (
   p_item_templ_noncurr_w_child=> t6,
   p_sub_templ_curr_w_child=> t7,
   p_sub_templ_noncurr_w_child=> t8,
-  p_translate_this_template => 'N',
   p_list_template_comment=>'');
 end;
 null;

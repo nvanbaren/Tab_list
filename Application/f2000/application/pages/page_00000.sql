@@ -18,7 +18,7 @@ wwv_flow_api.create_page (
  ,p_protection_level => 'D'
  ,p_cache_page_yn => 'N'
  ,p_last_updated_by => 'NICOLETTE'
- ,p_last_upd_yyyymmddhh24miss => '20141107134611'
+ ,p_last_upd_yyyymmddhh24miss => '20141121233332'
   );
 null;
  
@@ -115,8 +115,8 @@ wwv_flow_api.create_page_item(
   p_lov_display_extra=>'YES',
   p_protection_level => 'N',
   p_escape_on_http_output => 'Y',
-  p_attribute_01 => 'SUBMIT',
-  p_attribute_03 => 'Y',
+  p_attribute_01 => 'NONE',
+  p_attribute_02 => 'N',
   p_show_quick_picks=>'N',
   p_item_comment => '');
  
@@ -161,6 +161,53 @@ wwv_flow_api.create_page_item(
   p_button_is_hot=>'N',
   p_item_comment => '');
  
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_da_event (
+  p_id => 2729016783331490 + wwv_flow_api.g_id_offset
+ ,p_flow_id => wwv_flow.g_flow_id
+ ,p_page_id => 0
+ ,p_name => 'Change theme'
+ ,p_event_sequence => 10
+ ,p_triggering_element_type => 'ITEM'
+ ,p_triggering_element => 'P0_THEME'
+ ,p_bind_type => 'bind'
+ ,p_bind_event_type => 'change'
+  );
+wwv_flow_api.create_page_da_action (
+  p_id => 2729316850331571 + wwv_flow_api.g_id_offset
+ ,p_flow_id => wwv_flow.g_flow_id
+ ,p_page_id => 0
+ ,p_event_id => 2729016783331490 + wwv_flow_api.g_id_offset
+ ,p_event_result => 'TRUE'
+ ,p_action_sequence => 10
+ ,p_execute_on_page_init => 'N'
+ ,p_action => 'NATIVE_JAVASCRIPT_CODE'
+ ,p_attribute_01 => 'var linkElement, q;'||unistr('\000a')||
+'linkElement = $(''[href^="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/themes"]'');'||unistr('\000a')||
+'linkElement.attr({href : "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/themes/"+$(''#P0_THEME'').find(":selected").val()+''/jquery-ui.css''});'
+ ,p_stop_execution_on_error => 'Y'
+ );
+wwv_flow_api.create_page_da_action (
+  p_id => 2729790974459582 + wwv_flow_api.g_id_offset
+ ,p_flow_id => wwv_flow.g_flow_id
+ ,p_page_id => 0
+ ,p_event_id => 2729016783331490 + wwv_flow_api.g_id_offset
+ ,p_event_result => 'TRUE'
+ ,p_action_sequence => 20
+ ,p_execute_on_page_init => 'N'
+ ,p_action => 'NATIVE_EXECUTE_PLSQL_CODE'
+ ,p_attribute_01 => ':P0_THEME := :P0_THEME;'
+ ,p_attribute_02 => 'P0_THEME'
+ ,p_stop_execution_on_error => 'Y'
+ ,p_wait_for_result => 'Y'
+ );
+null;
  
 end;
 /

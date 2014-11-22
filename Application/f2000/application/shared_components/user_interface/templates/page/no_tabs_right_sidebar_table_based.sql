@@ -17,11 +17,11 @@ wwv_flow_api.create_template (
 '<html lang="&BROWSER_LANGUAGE." xmlns="http://www.w3.org/1999/xhtml" xmlns:htmldb="http://htmldb.oracle.com" xmlns:apex="http://apex.oracle.com">'||unistr('\000a')||
 '<head>'||unistr('\000a')||
 '  <title>#TITLE#</title>'||unistr('\000a')||
-'  <link rel="icon" href=&APPIMAGES.favicon.ico" type="image/x-icon">'||unistr('\000a')||
+'  <link rel="icon" href="&APPIMAGES.favicon.ico" type="image/x-icon">'||unistr('\000a')||
 '  <link rel="shortcut icon" href="&APPIMAGES.favicon.ico" type="image/x-icon">'||unistr('\000a')||
-'  #APEX_CSS#'||unistr('\000a')||
+'  '||unistr('\000a')||
 '#TEMPLATE_CSS#'||unistr('\000a')||
-'#THEME_CSS#'||unistr('\000a')||
+''||unistr('\000a')||
 '#PAGE_CSS#'||unistr('\000a')||
 '#APEX_JAVASCRIPT#'||unistr('\000a')||
 '#TEMPLATE_JAVASCRIPT#'||unistr('\000a')||
@@ -110,7 +110,6 @@ wwv_flow_api.create_template (
  ,p_grid_emit_empty_trail_cols => false
  ,p_has_edit_links => true
  ,p_reference_id => 18102530725762581
- ,p_translate_this_template => 'N'
   );
 null;
  
