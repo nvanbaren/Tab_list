@@ -38,6 +38,8 @@ wwv_flow_api.create_install (
   p_install_prompt_06    => 'Location of demo CSS files',
   p_prompt_sub_string_07 => 'Y',
   p_install_prompt_07    => 'Location of demo image files',
+  p_prompt_sub_string_10 => 'Y',
+  p_install_prompt_10    => 'Either http ot https',
   p_required_free_kb => 100,
   p_required_sys_privs => 'CREATE PROCEDURE:CREATE TABLE:CREATE TRIGGER:CREATE VIEW',
   p_deinstall_message=> '');

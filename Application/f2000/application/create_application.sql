@@ -10,7 +10,7 @@ wwv_flow_api.create_flow(
   p_alias => nvl(wwv_flow_application_install.get_application_alias,'T_TAB_LIST'),
   p_page_view_logging => 'YES',
   p_page_protection_enabled_y_n=> 'Y',
-  p_checksum_salt_last_reset => '20141201222103',
+  p_checksum_salt_last_reset => '20141206214801',
   p_max_session_length_sec=> null,
   p_compatibility_mode=> '4.2',
   p_html_escaping_mode=> 'E',
@@ -63,8 +63,10 @@ wwv_flow_api.create_flow(
   p_substitution_value_08  => 'pkg.name',
   p_substitution_string_09 => 'COPYRIGHT',
   p_substitution_value_09  => 'pkg.name pkg.version &copy;2014 nvbaren ',
+  p_substitution_string_10 => 'PROTOCOL',
+  p_substitution_value_10  => 'HTTP',
   p_last_updated_by => 'NICOLETTE',
-  p_last_upd_yyyymmddhh24miss=> '20141201222103',
+  p_last_upd_yyyymmddhh24miss=> '20141206214801',
   p_ui_type_name => null,
   p_required_roles=> wwv_flow_utilities.string_to_table2(''));
  

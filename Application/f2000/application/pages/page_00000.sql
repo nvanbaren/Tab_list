@@ -18,7 +18,7 @@ wwv_flow_api.create_page (
  ,p_protection_level => 'D'
  ,p_cache_page_yn => 'N'
  ,p_last_updated_by => 'NICOLETTE'
- ,p_last_upd_yyyymmddhh24miss => '20141121233332'
+ ,p_last_upd_yyyymmddhh24miss => '20141206213844'
   );
 null;
  
@@ -188,9 +188,13 @@ wwv_flow_api.create_page_da_action (
  ,p_action_sequence => 10
  ,p_execute_on_page_init => 'N'
  ,p_action => 'NATIVE_JAVASCRIPT_CODE'
- ,p_attribute_01 => 'var linkElement, q;'||unistr('\000a')||
-'linkElement = $(''[href^="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/themes"]'');'||unistr('\000a')||
-'linkElement.attr({href : "http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/themes/"+$(''#P0_THEME'').find(":selected").val()+''/jquery-ui.css''});'
+ ,p_attribute_01 => 'var linkElement, link, linkparts;'||unistr('\000a')||
+'linkElement = $(''[href*="/ajax/jquery.ui/1.8.22/themes"]'');'||unistr('\000a')||
+'link = linkElement.attr(''href'');'||unistr('\000a')||
+'linkparts = link.split(''/'');'||unistr('\000a')||
+'linkparts[linkparts.length-2] = apex.item(''P0_THEME'').getValue();'||unistr('\000a')||
+'link = linkparts.join(''/'');'||unistr('\000a')||
+'linkElement.attr({href :link});'
  ,p_stop_execution_on_error => 'Y'
  );
 wwv_flow_api.create_page_da_action (
