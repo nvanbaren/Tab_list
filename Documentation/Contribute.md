@@ -1,5 +1,5 @@
 Want to contribute to the plugin. Fork the repository, make the changes you feel are needed. And make pull request to see the changes merged back into the master. To make contribution easier there is chosen to not have a plugin import file in the repository but a whole apex application. The application not only holds the plugin but also holds examples of uses of the plugin. Also great for testing all the different settings.  
-Also is [grunt](http://gruntjs.com/ "grunt") used to make installation of the plugin ready for development easier. For installing the plugin on your development area run the grunt task **install**. Because all development areas are different there are several environment settings asked when running a grunt task. A lot of these are necessary for every task. Run the task **personal** to store your environment specific settings to prevent being asked every time you run a task.
+Also [grunt](http://gruntjs.com/ "grunt") is used to make installation of the plugin ready for development easier. For installing the plugin on your development area run the grunt task **install**. Because all development areas are different there are several environment settings asked when running a grunt task. A lot of these are necessary for every task. Run the task **personal** to store your environment specific settings to prevent being asked every time you run a task.
  
 ##Grunt##
 Grunt is used to help with the repetitive tasks such as installing or exporting the application.
@@ -21,12 +21,13 @@ The passwords will not be stored.
 ##Grunt tasks
 * **Default** Installs the application and source code. Uploads the necessary files to the server.
 * **Install** Installs the application and source code. Uploads the necessary files to the server.
-* **Build** Exports the application, splits the application export file. Still to do creating the plugin import file, create the documentation form the templates and readme files. And bundle everyting in a zipfile ready to be released.
+* **Build** Exports the application, splits the application export file. Ready for the next installation files
 * **Personal** Create the personal.json file with the settings specific for your environment.
-* **Load** Loads the files to the server. 
+* **Application** Creates the application file ready for installation on the demo environment. This task should only be run right for a new release.
+* **Release** Uses the build task as  starting point to create the plugin file. Also creates the documentation files. And bundle everything into a zip file.
  
 ##Directories##
-* **Application** Holds the splitted exported of the application that is used to build the application.
+* **Application** Holds the splitted exported of the application that is used to build the application. And files needed for the appliction such as the CSS and images.
 * **Documentation** All files used for user documentation that isn't the readme of the repository.
 * **Demo** Everything necessary to demo the plugin.
 * **Source** The source files. Files necessary to run the plugin.

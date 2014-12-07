@@ -1,7 +1,7 @@
 The way two level tabs are displayed in Apex is limited. For instance only the standard tabs belonging to the current parent tab are rendered. This plug-in does not only render the standard tabs for the current parent tab but for the other parent tabs as well. So it becomes possible to display the tabs as a drop down menu. For the HTML rendering a list template is used. Giving you as developer complete control over how the tabs are rendered. This plugin is the next evolution step of the region plugin Tab submenu which uses the page templates. This template uses a list template for its rendering which is a more natural fit. 
 ##Installation##
 With this installation package there is a plug-in installation file named:
-**region_type\_plugin\_net\_vanbaren\_apex\_tab\_list\_v1.01.sql**.   
+**region_type\_plugin\_net\_vanbaren\_apex\_tab\_list.sql**.   
 Navigate to **Shared Components** => **Plug-ins** and click **Import**. From there you can follow the wizard to upload and install the plug-in using the file above. After the plug-in has been installed successfully you will be redirected to the plug-in edit screen.  
 To be able to use the setting **Observe tabs conditions** the package _apex$checks_ needs to be installed. The code can be found in the folder **source/sql**. When you install the package into a different schema then the parsing schema don't forget the grant execute rights and use a synonym.
 ##Settings##

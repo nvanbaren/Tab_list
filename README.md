@@ -15,7 +15,7 @@
 The way two level tabs are displayed in Apex is limited. For instance only the standard tabs belonging to the current parent tab are rendered. This plug-in does not only render the standard tabs for the current parent tab but for the other parent tabs as well. So it becomes possible to display the tabs as a drop down menu. For the HTML rendering a list template is used. Giving you as developer complete control over how the tabs are rendered. This plugin is the next evolution step of the region plugin Tab submenu which uses the page templates. This template uses a list template for its rendering which is a more natural fit. 
 ##Installation##
 With this installation package there is a plug-in installation file named:
-**region_type\_plugin\_net\_vanbaren\_apex\_tab\_list\_v1.01.sql**.   
+**region_type\_plugin\_net\_vanbaren\_apex\_tab\_list.sql**.   
 Navigate to **Shared Components** => **Plug-ins** and click **Import**. From there you can follow the wizard to upload and install the plug-in using the file above. After the plug-in has been installed successfully you will be redirected to the plug-in edit screen.  
 To be able to use the setting **Observe tabs conditions** the package _apex$checks_ needs to be installed. The code can be found in the folder **source/sql**. When you install the package into a different schema then the parsing schema don't forget the grant execute rights and use a synonym.
 ##Settings##
@@ -48,7 +48,7 @@ To be able to use the setting **Observe tabs conditions** the package _apex$chec
 * ######The template name setting is correct but no tabs are rendered!
   If the template matches check if the Parent Tab Set of the parent tabs is set to main. If not change the following line in the code to use your Parent Tab Set.
 
-      c\_tabset  apex\_application\_parent\_tabs.tab\_set%type := 'main';
+      c_tabset  apex_application_parent_tabs.tab_set%type := 'main';
 
 
 
@@ -56,7 +56,7 @@ To be able to use the setting **Observe tabs conditions** the package _apex$chec
 [[Back To Top]](#jump-to-section)
 
 Want to contribute to the plugin. Fork the repository, make the changes you feel are needed. And make pull request to see the changes merged back into the master. To make contribution easier there is chosen to not have a plugin import file in the repository but a whole apex application. The application not only holds the plugin but also holds examples of uses of the plugin. Also great for testing all the different settings.  
-Also is [grunt](http://gruntjs.com/ "grunt") used to make installation of the plugin ready for development easier. For installing the plugin on your development area run the grunt task **install**. Because all development areas are different there are several environment settings asked when running a grunt task. A lot of these are necessary for every task. Run the task **personal** to store your environment specific settings to prevent being asked every time you run a task.
+Also [grunt](http://gruntjs.com/ "grunt") is used to make installation of the plugin ready for development easier. For installing the plugin on your development area run the grunt task **install**. Because all development areas are different there are several environment settings asked when running a grunt task. A lot of these are necessary for every task. Run the task **personal** to store your environment specific settings to prevent being asked every time you run a task.
  
 ##Grunt##
 Grunt is used to help with the repetitive tasks such as installing or exporting the application.
@@ -78,12 +78,13 @@ The passwords will not be stored.
 ##Grunt tasks
 * **Default** Installs the application and source code. Uploads the necessary files to the server.
 * **Install** Installs the application and source code. Uploads the necessary files to the server.
-* **Build** Exports the application, splits the application export file. Still to do creating the plugin import file, create the documentation form the templates and readme files. And bundle everyting in a zipfile ready to be released.
+* **Build** Exports the application, splits the application export file. Ready for the next installation files
 * **Personal** Create the personal.json file with the settings specific for your environment.
-* **Load** Loads the files to the server. 
+* **Application** Creates the application file ready for installation on the demo environment. This task should only be run right for a new release.
+* **Release** Uses the build task as  starting point to create the plugin file. Also creates the documentation files. And bundle everything into a zip file.
  
 ##Directories##
-* **Application** Holds the splitted exported of the application that is used to build the application.
+* **Application** Holds the splitted exported of the application that is used to build the application. And files needed for the appliction such as the CSS and images.
 * **Documentation** All files used for user documentation that isn't the readme of the repository.
 * **Demo** Everything necessary to demo the plugin.
 * **Source** The source files. Files necessary to run the plugin.
@@ -121,4 +122,4 @@ THE SOFTWARE.
 
 
 --------
-<small>_This readme has been automatically generated by [readme generator](https://github.com/aponxi/grunt-readme-generator) on Sat Dec 06 2014 22:06:14 GMT+0100 (West-Europa (standaardtijd))._</small>
+<small>_This readme has been automatically generated by [readme generator](https://github.com/aponxi/grunt-readme-generator) on Sun Dec 07 2014 09:29:52 GMT+0100 (West-Europa (standaardtijd))._</small>
