@@ -27,9 +27,11 @@ prompt install application
 commit;
 /
 prompt install code
+prompt connect &code_schema/&code_password@//&database_url
 connect &code_schema/&code_password@//&database_url
 @Source\sql\apex$checks.sql
 @Source\sql\apr$tab_list.sql
+@Application\sql\apr$demo_plugin.sql
 prompt code installed
 
 connect sys/&sys_password@//&database_url as sysdba
@@ -195,4 +197,4 @@ timing stop
 
 drop directory PLUGIN_FILES;
 commit;
-exit;
+

@@ -15,6 +15,7 @@
     </directories>
     <files>
 	    <file>Application/images/favicon.ico</file>
+		<file>Application/images/logo-white.png</file>
         <file>Application/css/Basic-ui.css</file>
         <file>Application/javascript/Apexlib_overload.js</file>		
         <file>Demo/css/Special-lists.css</file>

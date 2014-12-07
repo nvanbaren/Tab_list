@@ -10,6 +10,7 @@ wwv_flow_api.create_user_interface (
  ,p_theme_id => 102
  ,p_home_url => 'f?p=&APP_ID.:TABLIST:&SESSION.'
  ,p_login_url => 'f?p=&APP_ID.:LOGIN_DESKTOP:&SESSION.'
+ ,p_global_page_id => 0
   );
 null;
  

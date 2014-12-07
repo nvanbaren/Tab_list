@@ -17,5 +17,3 @@ end;
 
 prompt  ...Shared Lists of values
 --
-prompt  ...Application Trees
---

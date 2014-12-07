@@ -1,5 +1,5 @@
 --application/pages/page_00011
-prompt  ...PAGE 11: Tab list
+prompt  ...PAGE 11: pkg.name
 --
  
 begin
@@ -9,22 +9,24 @@ wwv_flow_api.create_page (
  ,p_id => 11
  ,p_user_interface_id => 3079567899087759 + wwv_flow_api.g_id_offset
  ,p_tab_set => 'T_REGION'
- ,p_name => 'Tab list'
+ ,p_name => 'pkg.name'
  ,p_alias => 'TABLIST'
- ,p_step_title => 'Tab menu list'
+ ,p_step_title => ' pkg.name'
  ,p_allow_duplicate_submissions => 'Y'
  ,p_step_sub_title_type => 'TEXT_WITH_SUBSTITUTIONS'
  ,p_first_item => 'NO_FIRST_ITEM'
  ,p_include_apex_css_js_yn => 'Y'
  ,p_autocomplete_on_off => 'ON'
- ,p_javascript_file_urls => '/projects/Tab_list/Demo/javascript/slidebox.js'
+ ,p_javascript_file_urls => '&DEMOJAVASCRIPT.slidebox.js'
  ,p_javascript_code_onload => 
 '$(function() {'||unistr('\000a')||
 '  $(''#sdt_menu > li'')'||unistr('\000a')||
 '    .bind(''mouseenter'',function(){slidebox_in(this,120);})'||unistr('\000a')||
 '    .bind(''mouseleave'',function(){slidebox_out(this,120);})'||unistr('\000a')||
 '});'
- ,p_css_file_urls => '/projects/Tab_list/Demo/css/Special-lists.css'
+ ,p_css_file_urls => '&DEMOCSS.Special-lists.css'
+ ,p_inline_css => 
+'#FLYOUTMENU{height:520px}'
  ,p_step_template => 39658505916395976 + wwv_flow_api.g_id_offset
  ,p_page_is_public_y_n => 'N'
  ,p_protection_level => 'N'
@@ -34,7 +36,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'No help is available for this page.'
  ,p_last_updated_by => 'NICOLETTE'
- ,p_last_upd_yyyymmddhh24miss => '20141102151934'
+ ,p_last_upd_yyyymmddhh24miss => '20141106163955'
   );
 null;
  

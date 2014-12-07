@@ -1,4 +1,15 @@
 module.exports = function(grunt) {
+  function get_install_command(code_user,application_user){
+	  var filename;
+		grunt.verbose.writeln('Get install command');
+		if (code_user ===application_user) {
+		  filename = 'build\\install_app_same.sql';
+		} else {
+		  filename = 'build\\install_app_diff.sql';
+		}
+		return 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @'+filename+' <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>';
+	}
+	grunt.verbose.writeln('Start config');
   grunt.initConfig({
 	  personal: grunt.file.readJSON('Build\\.personalsettings.json'),
     pkg: grunt.file.readJSON('package.json'),
@@ -196,13 +207,24 @@ module.exports = function(grunt) {
 					  }
 				},
 				install: {
-				    command: 'sqlplus <%= personal.application.user %>/<%= personal.application.password %>@//<%= personal.database.url %>/<%= personal.database.host %> @build\\install_app.sql <%= personal.application.workspace %> <%= personal.application.offset %> <%= personal.database.url %>/<%= personal.database.host %> <%= personal.application.user %> <%= personal.code.user %> <%= personal.code.password %> <%= personal.system.password %>',
+				    command:get_install_command('<%= personal.code.user%>,<%= personal.application.user%>'),
 						options:{
 						  stdout: true,
 						  stderr: true,
 						  stdin: true,
 						  failOnError: true
 						}
+				},
+				application: {
+            command: ['cd Application'
+						         ,'java oracle.apex.APEXExport -db <%= personal.database.url %>:<%= personal.database.host %> -user <%= personal.application.user %> -password <%= personal.application.password %> -applicationid 2000'
+										 ].join('&&'),
+            options:{
+						  stdout: true,
+						  stderr: true,
+						  stdin:  true,
+						  failOnError: true
+					  }
 				}
     },
 		copy: {
@@ -303,6 +325,20 @@ module.exports = function(grunt) {
 						}
 					}
 				]
+			},
+			application:{
+			  src:['Application\\f2000.sql'],
+				overwrite:true,
+				replacements:[
+				  {
+					  from:"pkg.name",
+						to:"<%= pkg.name %>"
+					},
+					{
+					  from:"pkg.version",
+						to:"<%= pkg.version %>"
+					}
+				]
 			}
 		},	
 		readme_generator: {
@@ -369,5 +405,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('install', ['prompt:install','copy:load','shell:install','clean:load','cleanFile:load']);
   grunt.registerTask('default', ['install']);
 	grunt.registerTask('personal',['prompt:create','create-personal']);
+	grunt.registerTask('application',['prompt:build','setEnvironment','shell:application','replace:application']);
 	grunt.registerTask('release',['build','replace:release','pdfgenerator','readme_generator','zip','cleanFile:release']);
 };

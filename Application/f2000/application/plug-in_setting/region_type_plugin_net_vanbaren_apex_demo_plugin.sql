@@ -31,7 +31,7 @@ wwv_flow_api.create_plugin_setting (
 '    <pre id="#ID#">#VALUE#</pre>'||unistr('\000a')||
 '  </td>'||unistr('\000a')||
 '</tr>'
- ,p_attribute_07 => '<div id="h#ID#"class="demo-help" >#HELP_TEXT#</div>'
+ ,p_attribute_07 => '<div id="h#ID#" class="demo-help" >#HELP_TEXT#</div>'
  ,p_attribute_08 => '<h3 data-for="#ID#"> <a class="component-header" href="#">#TITLE#</a></h3>'||unistr('\000a')||
 '<div id="#ID#"><table class="standardReport" cellspacing="0" cellpadding="0" border="0" summary="">'||unistr('\000a')||
 '#ATTRIBUTES#'||unistr('\000a')||
@@ -42,7 +42,7 @@ wwv_flow_api.create_plugin_setting (
 '</div>'
  ,p_attribute_09 => '<tr>'||unistr('\000a')||
 '  <td class="attribute_help">'||unistr('\000a')||
-'    <label for="#ID#" class="labelcolumn"title="click for help">#PROMPT#</label>#HELP#'||unistr('\000a')||
+'    <label for="#ID#" class="labelcolumn" title="click for help">#PROMPT#</label>#HELP#'||unistr('\000a')||
 '  </td>'||unistr('\000a')||
 '  <td >'||unistr('\000a')||
 '    <pre id="#ID#">#VALUE#</pre>'||unistr('\000a')||

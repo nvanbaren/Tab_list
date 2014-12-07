@@ -24,24 +24,23 @@ declare
 begin
 t:=t||'<li>'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link ">#TEXT#</span>'||unistr('\000a')||
 '    </span>'||unistr('\000a')||
 '  </a>'||unistr('\000a')||
-'  <div class="sdt_box">'||unistr('\000a')||
 '</li>';
 
 t2:=t2||'<li >'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link">#TEXT#</span>'||unistr('\000a')||
 '    </span>'||unistr('\000a')||
 '  </a>'||unistr('\000a')||
-'  <div class="sdt_box">'||unistr('\000a')||
+' '||unistr('\000a')||
 '</li>';
 
 t3:=t3||'<a href="#LINK#" class="currentTab">#TEXT#</a>';
@@ -50,24 +49,22 @@ t4:=t4||'<a href="#LINK#" class="Tab">#TEXT#</a>';
 
 t5:=t5||'<li>'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link ">#TEXT#</span>'||unistr('\000a')||
 '    </span>'||unistr('\000a')||
 '  </a>'||unistr('\000a')||
-'  <div class="sdt_box">'||unistr('\000a')||
 '</li>';
 
 t6:=t6||'<li>'||unistr('\000a')||
 '  <a href="#">'||unistr('\000a')||
-'    <img src="/projects/Tab_menu_list/Demo/images/#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
+'    <img src="#IMAGE#" alt="#TEXT_ESC_SC#"/>'||unistr('\000a')||
 '    <span class="sdt_active"></span>'||unistr('\000a')||
 '    <span class="sdt_wrap">'||unistr('\000a')||
 '      <span class="sdt_link ">#TEXT#</span>'||unistr('\000a')||
 '    </span>'||unistr('\000a')||
 '  </a>'||unistr('\000a')||
-'  <div class="sdt_box">'||unistr('\000a')||
 '</li>';
 
 t7 := null;
@@ -84,11 +81,12 @@ wwv_flow_api.create_list_template (
   p_list_template_after_rows=>'</ul>'||unistr('\000a')||
 '<br style="clear:both;">'||unistr('\000a')||
 '<br style="clear:both;">',
+  p_before_sub_list=>' <div class="sdt_box">',
+  p_after_sub_list=>'</div>',
   p_sub_list_item_current=> t3,
   p_sub_list_item_noncurrent=> t4,
   p_item_templ_curr_w_child=> t5,
   p_item_templ_noncurr_w_child=> t6,
-  p_translate_this_template => 'N',
   p_list_template_comment=>'');
 end;
 null;

@@ -10,5 +10,5 @@
 * ######The template name setting is correct but no tabs are rendered!
   If the template matches check if the Parent Tab Set of the parent tabs is set to main. If not change the following line in the code to use your Parent Tab Set.
 
-      c\_tabset  apex\_application\_parent\_tabs.tab\_set%type := 'main';
+      c_tabset  apex_application_parent_tabs.tab_set%type := 'main';
 
