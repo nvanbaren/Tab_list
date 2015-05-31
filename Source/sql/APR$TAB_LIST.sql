@@ -5,7 +5,7 @@
 create or replace function APR$TAB_LIST (p_region               in apex_plugin.t_region
                                         ,p_plugin               in apex_plugin.t_plugin
                                         ,p_is_printer_friendly  in boolean)
-return apex_plugin.t_region_render_result 
+return apex_plugin.t_region_render_result
   as
   type r_attributes is record(
     link              apex_application_parent_tabs.tab_target%type
@@ -20,7 +20,7 @@ return apex_plugin.t_region_render_result
    ,parent_label      apex_application_parent_tabs.tab_label%type
    ,status            varchar2(30)
   );
-  
+
   cursor c_pag(b_app_id  in number
               ,b_page_id in number
               )
@@ -30,7 +30,7 @@ return apex_plugin.t_region_render_result
     where  pag.page_id = b_page_id
     and    pag.application_id = b_app_id
   ;
-  
+
   cursor c_temp(b_template_name  in varchar2
                ,b_theme_number   in number
                ,b_application_id in number
@@ -59,13 +59,13 @@ return apex_plugin.t_region_render_result
                    ,lis.item_template_curr_w_child
                    ,lis.item_template_noncurr_w_child) first_current_with
     ,      nvl(to_clob(lis.fitem_template_noncurr_w_child)
-              ,lis.item_template_noncurr_w_child)      first_non_current_with      
+              ,lis.item_template_noncurr_w_child)      first_non_current_with
     from   apex_application_temp_list lis
     where  lis.application_id = b_application_id
     and    lis.theme_number   = b_theme_number
     and    lis.template_name  = b_template_name
   ;
-  
+
   cursor c_pat(b_app_id in number
               ,b_tabset in varchar2
               )
@@ -89,10 +89,10 @@ return apex_plugin.t_region_render_result
     and   (pat.tab_set = b_tabset
            or
            b_tabset is null
-           )      
+           )
     order by pat.display_sequence
   ;
-  
+
   cursor c_tab(b_app_id in number
               ,b_tab_set in varchar2
               )
@@ -117,15 +117,15 @@ return apex_plugin.t_region_render_result
     and    tab.tab_set        = b_tab_set
     order by tab.display_sequence
   ;
-  
+
   type l_table_pat is table of c_pat%rowtype
   index by pls_integer;
   l_pat_table  l_table_pat;
-  
+
   type l_table_tab is table of c_tab%rowtype
   index by pls_integer;
   l_tab_table  l_table_tab;
-  
+
   c_tabset           apex_application_parent_tabs.tab_set%type := 'main';
   l_return           apex_plugin.t_region_render_result;
   l_current_tab_set	 apex_application_pages.tab_set%type;
@@ -133,26 +133,26 @@ return apex_plugin.t_region_render_result
   l_template_name    p_region.attribute_01%type := p_region.attribute_01;
   l_include_single   p_region.attribute_02%type := p_region.attribute_02;
   l_parent_link      p_region.attribute_03%type := p_region.attribute_03;
- 
+
   l_use_conditions   boolean := (p_region.attribute_04 = 'Y');
-  
+
   r_temp             c_temp%rowtype;
   r_pat_attributes   r_attributes;
   r_tab_attributes   r_attributes;
-  
+
   l_html_parent		   varchar2(32767);
   l_html_tab			   varchar2(32767);
   l_last_part        varchar2(32767);
   l_first_part       varchar2(32767);
   l_function         varchar2(32767);
   l_result           varchar2(1);
-  
+
   l_is_current       boolean;
   l_number_tabs      number;
   i                  number;
   k                  number;
   h                  number;
-  
+
   function get_url(p_current_parent boolean
                   ,p_tab_name       varchar2
                   ,p_tab_page       number
@@ -175,17 +175,17 @@ return apex_plugin.t_region_render_result
         l_debug_string := 'YES';
       else
         l_debug_string := 'NO';
-      end if; 
+      end if;
       l_url := 'f?p='||wwv_flow.g_flow_alias||':'||p_tab_page||':'||wwv_flow.g_instance||'::'||l_debug_string;
       l_url := apex_util.prepare_url(apex_application.do_substitutions(l_url));
     end if;
     return l_url;
   end;
-  
+
   function replace_substitution(p_template     varchar2
                                ,p_attributes   r_attributes
                                )
-  return varchar2                          
+  return varchar2
   as
     l_url        varchar2(150);
     l_template   varchar2(32767);
@@ -203,14 +203,14 @@ return apex_plugin.t_region_render_result
     l_template := replace(l_template,'#LEVEL#',p_attributes.tab_level);
     return  apex_plugin_util.replace_substitutions(l_template);
   end;
-    
+
 begin
   apex_plugin_util.
      debug_region(p_plugin               => p_plugin,
                   p_region               => p_region,
                   p_is_printer_friendly  => p_is_printer_friendly);
-  
-  apex_debug.message('Start tab menu list');                 
+
+  apex_debug.message('Start tab menu list');
   /*Determine the current tab set*/
   open c_pag(wwv_flow.g_flow_id,wwv_flow.g_flow_step_id);
   fetch c_pag
@@ -222,31 +222,32 @@ begin
   fetch c_temp
   into  r_temp;
   close c_temp;
-  
+
   /*Get the parent tabs*/
   open c_pat(wwv_flow.g_flow_id,c_tabset);
   fetch c_pat bulk collect
   into  l_pat_table;
   close c_pat;
-  
+
   if l_use_conditions
   then
     /*Remove the tabs that shouldn't be displayed demending on the conditions*/
     for l in l_pat_table.first .. l_pat_table.last
     loop
       if apex_plugin_util.is_component_used(
-          l_tab_table(l).build_option,
-          l_tab_table(l).authorization_scheme,
-          l_tab_table(l).condition_type,
-          l_tab_table(l).condition_expression1,
-          l_tab_table(l).condition_expression2
-          )
-      then
-        l_tab_table.delete(l);
-      end if;  
+            l_pat_table(l).build_option,
+            l_pat_table(l).authorization_scheme,
+            l_pat_table(l).condition_type,
+            l_pat_table(l).condition_expression1,
+            l_pat_table(l).condition_expression2
+            )
+        then
+          l_pat_table.delete(l);
+        end if;
     end loop;
+    
   end if;
-  
+
   k := l_pat_table.first;
   while k is not null
   loop
@@ -255,35 +256,34 @@ begin
     fetch c_tab bulk collect
     into  l_tab_table;
     close c_tab;
-    
+
     if l_use_conditions
     then
       /*Remove the tabs that shouldn't be displayed demending on the conditions*/
       for g in l_tab_table.first .. l_tab_table.last
       loop
-        l_function := 'return apex$checks.auth_condition_check_int('''||l_tab_table(g).condition_type
-                   || ''','''||l_tab_table(g).condition_expression1
-                   || ''','''||l_tab_table(g).condition_expression2
-                   || ''','''||l_tab_table(g).authorization_scheme
-                   || ''','''||l_tab_table(g).build_option
-                   || ''');';
-        l_result := apex_plugin_util.get_plsql_function_result(l_function);
-        if l_result = 0
+        if apex_plugin_util.is_component_used(
+            l_tab_table(g).build_option,
+            l_tab_table(g).authorization_scheme,
+            l_tab_table(g).condition_type,
+            l_tab_table(g).condition_expression1,
+            l_tab_table(g).condition_expression2
+            )
         then
           l_tab_table.delete(g);
-        end if;  
+        end if;
       end loop;
-    end if;      
-    
+    end if;
+
     l_is_current := (l_pat_table(k).current_for_tabset = nvl(l_current_tab_set,'!'));
     if l_tab_table.count = 1
        and
        l_include_single = 'N'
     then
       l_number_tabs :=  0;
-    else  
+    else
       l_number_tabs := l_tab_table.count;
-    end if;  
+    end if;
     /*Determine the right parent template*/
     if l_number_tabs > 0
        and
@@ -297,7 +297,7 @@ begin
     elsif l_number_tabs > 0
           and
           k = 1
-          and 
+          and
           not l_is_current
     then
       /*First with child not current*/
@@ -306,17 +306,17 @@ begin
     elsif l_number_tabs > 0
           and
           k >1
-          and 
+          and
           l_is_current
-    then      
+    then
       /*Item with child current*/
       l_html_parent := r_temp.current_item_with;
       r_pat_attributes.status := 'current';
     elsif l_number_tabs > 0
           and
           k > 1
-          and 
-          not l_is_current  
+          and
+          not l_is_current
     then
       /*Item with child non current*/
       l_html_parent := r_temp.non_current_item_with;
@@ -333,7 +333,7 @@ begin
     elsif l_number_tabs = 0
           and
           k = 1
-          and 
+          and
           not l_is_current
     then
       /*First without child not current*/
@@ -342,24 +342,24 @@ begin
     elsif l_number_tabs = 0
           and
           k > 1
-          and 
+          and
           l_is_current
-    then      
+    then
       /*Item without child current*/
       l_html_parent := r_temp.current_item;
       r_pat_attributes.status := 'current';
     elsif l_number_tabs = 0
           and
           k > 0
-          and 
-          not l_is_current  
+          and
+          not l_is_current
     then
-      /*Item without child non current*/ 
+      /*Item without child non current*/
       l_html_parent := r_temp.non_current_item;
       r_pat_attributes.status := 'non-current';
     end if;
     if k>0
-       and 
+       and
        k=l_pat_table.last
     then
       r_pat_attributes.status :='last-'||r_pat_attributes.status;
@@ -376,13 +376,13 @@ begin
     r_pat_attributes.name := l_pat_table(k).tab_name;
     r_pat_attributes.tab_level := 1;
     r_pat_attributes.id := l_pat_table(k).parent_tab_id;
-    
+
     if l_tab_table.count = 0
        or
        l_parent_link = 'Y'
     then
       /*No children the target is the target defined by the parent*/
-      r_pat_attributes.link := apex_util.prepare_url(apex_application.do_substitutions(l_pat_table(k).tab_target));                               
+      r_pat_attributes.link := apex_util.prepare_url(apex_application.do_substitutions(l_pat_table(k).tab_target));
     elsif (l_include_single = 'N'
            and
            l_tab_table.count = 1
@@ -392,11 +392,11 @@ begin
       r_pat_attributes.link := get_url(l_is_current
                                       ,l_tab_table(1).tab_name
                                       ,l_tab_table(1).tab_page
-                                      );                       
+                                      );
     else
       r_pat_attributes.link :='#';
     end if;
-    
+
     if k = 1
     then
       /*It's the first parent tab*/
@@ -405,7 +405,7 @@ begin
       /*Write between*/
       sys.htp.p(replace_substitution(r_temp.between_item,r_pat_attributes));
     end if;
-    
+
     if l_tab_table.count = 0
        or
        (l_include_single = 'N'
@@ -416,7 +416,7 @@ begin
       /*No children to be placed*/
       sys.htp.p(replace_substitution(l_html_parent
                                     ,r_pat_attributes
-                                    )    
+                                    )
                );
     else
       /*Split parent template to give childeren space
@@ -425,13 +425,13 @@ begin
       if substr(l_html_parent
                ,regexp_instr(l_html_parent,'</\w{1,}>\w{0,}$',1,1,0,'i')+2
                ,regexp_instr(l_html_parent,'>\w{0,}$',1,1,0,'i')-regexp_instr(l_html_parent,'</\w{1,}>\w{0,}$',1,1,0,'i')-2
-               ) 
-        =   
+               )
+        =
         substr(l_html_parent
               ,regexp_instr(l_html_parent,'^\w{0,}<',1,1,1,'i')
               ,regexp_instr(l_html_parent,'^\w{0,}<\w{1,}',1,1,1,'i')-regexp_instr(l_html_parent,'^\w{0,}<',1,1,1,'i')
               )
-      then     
+      then
         l_last_part := substr(l_html_parent
                              ,regexp_instr(l_html_parent,'</\w{1,}>\w{0,}$',1,1,0,'i')
                              );
@@ -443,11 +443,11 @@ begin
         /*Sublist items are placed after the list item*/
         l_last_part := null;
         l_first_part := l_html_parent;
-      end if;  
+      end if;
       /*Write (first part of) the list item*/
       sys.htp.p(replace_substitution(l_first_part
                                     ,r_pat_attributes
-                                    )    
+                                    )
                );
       /*Before sub list items*/
       r_tab_attributes.parent_id := l_pat_table(k).parent_tab_id;
@@ -484,7 +484,7 @@ begin
           /*Between sub_list*/
           sys.htp.p(replace_substitution(r_temp.between_sub_list,r_tab_attributes));
         end if;
-        sys.htp.p(replace_substitution(l_html_tab,r_tab_attributes)); 
+        sys.htp.p(replace_substitution(l_html_tab,r_tab_attributes));
         h := l_tab_table.next(h);
       end loop;
       /*After sub list*/
@@ -497,7 +497,7 @@ begin
        sys.htp.p(replace_substitution(r_temp.after_rows,r_pat_attributes));
     end if;
     k := l_pat_table.next(k);
-  end loop;  
+  end loop;
   return l_return;
 end apr$tab_list;
 
