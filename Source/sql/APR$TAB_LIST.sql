@@ -234,16 +234,15 @@ begin
     /*Remove the tabs that shouldn't be displayed demending on the conditions*/
     for l in l_pat_table.first .. l_pat_table.last
     loop
-      l_function := 'return apex$checks.auth_condition_check_int('''||l_pat_table(l).condition_type
-                 || ''','''||l_pat_table(l).condition_expression1
-                 || ''','''||l_pat_table(l).condition_expression2
-                 || ''','''||l_pat_table(l).authorization_scheme
-                 || ''','''||l_pat_table(l).build_option
-                 || ''');';
-      l_result := apex_plugin_util.get_plsql_function_result(l_function);
-      if l_result = 0
+      if apex_plugin_util.is_component_used(
+          l_tab_table(l).build_option,
+          l_tab_table(l).authorization_scheme,
+          l_tab_table(l).condition_type,
+          l_tab_table(l).condition_expression1,
+          l_tab_table(l).condition_expression2
+          )
       then
-        l_pat_table.delete(l);
+        l_tab_table.delete(l);
       end if;  
     end loop;
   end if;
