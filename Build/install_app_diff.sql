@@ -12,12 +12,10 @@ prompt install code
 connect &code_schema/&code_password@//&database_url
 
 Prompt create public synonyms
-CREATE OR REPLACE PUBLIC SYNONYM "APEX$CHECKS" FOR &code_schema.."APEX$CHECKS";
 CREATE OR REPLACE PUBLIC SYNONYM "APR$DEMO_PLUGIN" FOR &code_schema.."APR$DEMO_PLUGIN";
 CREATE OR REPLACE PUBLIC SYNONYM "APR$TAB_LIST" FOR &code_schema.."APR$TAB_LIST";
 
 Prompt grant execute rights
-GRANT execute ON "APEX$CHECKS" TO &app_schema;
 GRANT execute ON "APR$DEMO_PLUGIN" TO &app_schema;
 GRANT execute ON "APR$TAB_LIST" TO &app_schema;
 
