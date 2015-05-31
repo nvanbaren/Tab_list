@@ -29,6 +29,7 @@ commit;
 prompt install code
 prompt connect &code_schema/&code_password@//&database_url
 connect &code_schema/&code_password@//&database_url
+@Source\sql\apex$checks.sql
 @Source\sql\apr$tab_list.sql
 @Application\sql\apr$demo_plugin.sql
 prompt code installed

@@ -2,7 +2,8 @@ The way two level tabs are displayed in Apex is limited. For instance only the s
 ##Installation##
 With this installation package there is a plug-in installation file named:
 **region_type\_plugin\_net\_vanbaren\_apex\_tab\_list.sql**.   
-Navigate to **Shared Components** => **Plug-ins** and click **Import**. From there you can follow the wizard to upload and install the plug-in using the file above. After the plug-in has been installed successfully you will be redirected to the plug-in edit screen.
+Navigate to **Shared Components** => **Plug-ins** and click **Import**. From there you can follow the wizard to upload and install the plug-in using the file above. After the plug-in has been installed successfully you will be redirected to the plug-in edit screen.  
+To be able to use the setting **Observe tabs conditions** the package _apex$checks_ needs to be installed. The code can be found in the folder **source/sql**. When you install the package into a different schema then the parsing schema don't forget the grant execute rights and use a synonym.
 ##Settings##
 - **Template**: Name of list template. Template is used to render the html of the region. The template needs to belong to the current theme. And the name is case sensitive.
 - **Include single tab**: Should the tab be include if it is the only one?  
