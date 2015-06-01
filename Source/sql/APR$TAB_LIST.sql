@@ -79,12 +79,15 @@ return apex_plugin.t_region_render_result
     ,      pat.when_non_current_image
     ,      pat.image_attributes
     ,      pat.parent_tab_id
-    ,      pat.condition_type
+    ,      pat.condition_type_code
     ,      pat.condition_expression1
     ,      pat.condition_expression2
-    ,      pat.authorization_scheme
-    ,      pat.build_option
+    ,      pat.authorization_scheme_id
+    ,      buo.build_option_id
     from   apex_application_parent_tabs pat
+    left outer join   apex_application_build_options buo
+    on     buo.application_id = pat.application_id
+    and    buo.build_option_name = pat.build_option
     where	 pat.application_id = b_app_id
     and   (pat.tab_set = b_tabset
            or
@@ -234,17 +237,16 @@ begin
     /*Remove the tabs that shouldn't be displayed demending on the conditions*/
     for l in l_pat_table.first .. l_pat_table.last
     loop
-      l_function := 'return apex$checks.auth_condition_check_int('''||l_pat_table(l).condition_type
-                 || ''','''||l_pat_table(l).condition_expression1
-                 || ''','''||l_pat_table(l).condition_expression2
-                 || ''','''||l_pat_table(l).authorization_scheme
-                 || ''','''||l_pat_table(l).build_option
-                 || ''');';
-      l_result := apex_plugin_util.get_plsql_function_result(l_function);
-      if l_result = 0
+      if not apex_plugin_util.is_component_used(
+        l_pat_table(l).build_option_id,
+        l_pat_table(l).authorization_scheme_id,
+        l_pat_table(l).condition_type_code,
+        l_pat_table(l).condition_expression1,
+        l_pat_table(l).condition_expression2
+        )
       then
         l_pat_table.delete(l);
-      end if;  
+      end if;
     end loop;
   end if;
   
