@@ -79,12 +79,15 @@ return apex_plugin.t_region_render_result
     ,      pat.when_non_current_image
     ,      pat.image_attributes
     ,      pat.parent_tab_id
-    ,      pat.condition_type
+    ,      pat.condition_type_code
     ,      pat.condition_expression1
     ,      pat.condition_expression2
-    ,      pat.authorization_scheme
-    ,      pat.build_option
+    ,      pat.authorization_scheme_id
+    ,      buo.build_option_id
     from   apex_application_parent_tabs pat
+    left outer join   apex_application_build_options buo
+    on     buo.application_id = pat.application_id
+    and    buo.build_option_name = pat.build_option
     where	 pat.application_id = b_app_id
     and   (pat.tab_set = b_tabset
            or
@@ -107,12 +110,15 @@ return apex_plugin.t_region_render_result
     ,      tab.when_not_current_tab_image
     ,      tab.tab_image_attributes
     ,      tab.tab_id
-    ,      tab.condition_type
+    ,      tab.condition_type_code
     ,      tab.condition_expression1
     ,      tab.condition_expression2
-    ,      tab.authorization_scheme
-    ,      tab.build_option
+    ,      tab.authorization_scheme_id
+    ,      buo.build_option_id
     from	 apex_application_tabs tab
+    left outer join   apex_application_build_options buo
+    on     buo.application_id = tab.application_id
+    and    buo.build_option_name = tab.build_option
     where	 tab.application_id = b_app_id
     and    tab.tab_set        = b_tab_set
     order by tab.display_sequence
@@ -234,17 +240,16 @@ begin
     /*Remove the tabs that shouldn't be displayed demending on the conditions*/
     for l in l_pat_table.first .. l_pat_table.last
     loop
-      l_function := 'return apex$checks.auth_condition_check_int('''||l_pat_table(l).condition_type
-                 || ''','''||l_pat_table(l).condition_expression1
-                 || ''','''||l_pat_table(l).condition_expression2
-                 || ''','''||l_pat_table(l).authorization_scheme
-                 || ''','''||l_pat_table(l).build_option
-                 || ''');';
-      l_result := apex_plugin_util.get_plsql_function_result(l_function);
-      if l_result = 0
+      if not apex_plugin_util.is_component_used(
+        l_pat_table(l).build_option_id,
+        l_pat_table(l).authorization_scheme_id,
+        l_pat_table(l).condition_type_code,
+        l_pat_table(l).condition_expression1,
+        l_pat_table(l).condition_expression2
+        )
       then
         l_pat_table.delete(l);
-      end if;  
+      end if;
     end loop;
   end if;
   
@@ -262,14 +267,13 @@ begin
       /*Remove the tabs that shouldn't be displayed demending on the conditions*/
       for g in l_tab_table.first .. l_tab_table.last
       loop
-        l_function := 'return apex$checks.auth_condition_check_int('''||l_tab_table(g).condition_type
-                   || ''','''||l_tab_table(g).condition_expression1
-                   || ''','''||l_tab_table(g).condition_expression2
-                   || ''','''||l_tab_table(g).authorization_scheme
-                   || ''','''||l_tab_table(g).build_option
-                   || ''');';
-        l_result := apex_plugin_util.get_plsql_function_result(l_function);
-        if l_result = 0
+        if not apex_plugin_util.is_component_used(
+          l_tab_table(g).build_option_id,
+          l_tab_table(g).authorization_scheme_id,
+          l_tab_table(g).condition_type_code,
+          l_tab_table(g).condition_expression1,
+          l_tab_table(g).condition_expression2
+        )
         then
           l_tab_table.delete(g);
         end if;  
